@@ -1,25 +1,22 @@
 ---
-title: "Tutorial 2: Navigation Strategies"
+title: "Tutorial 3: Regression"
 author:
-- 'Kexin Ren'
 - 'Younesse Kaddar'
-date: 2018-04-28
+- 'Kexin Ren'
+date: 2018-05-06
 tags:
   - lab
   - tutorial
   - exercise
-  - reinforcement-learning
-  - naigation-strategies
-  - ROS
-  - robotics
+  - regression
   - neuroscience
   - neuro-robotique
   - neurorobotics
-  - Girard
-  - Coninx
-abstract: 'Lab 2: Navigation Strategies'
+  - 
+  - 
+abstract: 'Lab 3: Regression'
 ---
 
-# Tutorial 2: Navigation Strategies
+# Tutorial 3: Regression
 
-### Kexin Ren & Younesse Kaddar (**Lecturers**: Alexandre Coninx & Benoît Girard)
+### Younesse Kaddar & Kexin Ren (**Lecturers**: )
