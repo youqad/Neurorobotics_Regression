@@ -12,8 +12,7 @@ tags:
   - neuroscience
   - neuro-robotique
   - neurorobotics
-  - 
-  - 
+  - Nicolas Perrin
 abstract: 'Lab 3: Regression'
 ---
 
@@ -21,9 +20,23 @@ abstract: 'Lab 3: Regression'
 
 ### Younesse Kaddar & Kexin Ren (**Lecturers**: )
 
+(intro)
 
-## 1 Sommes pond´er´ees de fonctions Gaussiennes
-### 1.1 Descente de gradient (m´ethode incr´ementale)
+
+# Questions
+
+
+## 1 Weighted sum of Gaussian functions
+
+### 1.1 Gradient descent (incremental method)
+
+#### Open the `exoGD.py file`. It contains the function `generateDataSample(x)` which makes it possible to generate a noise data `y` for `x` ∈ [$0$, $1$] (dim(`x`) = $1$), the function `phiOutput (input)` which allows to generate the vector `φ(x)` or a matrix of vectors `φ(x (i))` concatenated if the input is a tuple, and the function `f(input, * user_theta)` which makes it possible to calculate f(x). Parameters used by `f` are either the global variable `theta`, or a value `*user_theta` provided in input. Number of components of `φ(x)` (that is, the number `k` of Gaussian functions) is defined by the global variable `numFeatures`.
+
+#### Implement the `train_GD(maxIter)` function that will adjust the `theta` value by gradient descent from a number of data equal to `maxIter`. When the file is executed, the observed data is displayed by dots, and the red line is the function "learned", that is, the function f corresponding to the parameters `theta` adjusted by `train_GD(maxIter)`. Other curves correspond to the different fθi (x) and show how the function `f` is decomposed.
+
+
+According to the fomulas given in the tutorial for calculating `f`, `ε`, `∇` and `θ`,  we modified the original codes as follows for `train_GD(maxIter)` function:
+
 
 ```python
 	def train_GD(maxIter):
@@ -41,13 +54,14 @@ abstract: 'Lab 3: Regression'
 		xHistory.append(x)
 		yHistory.append(y)
 		
+		#-----------------------------#
+		#         Modification        #
+		#-----------------------------#
 		fval = f(x,theta)
 		e = y - fval
 		delta = phiOutput(x)
 		theta += alpha*e*delta
 		
-		
-		# LES MODIFICATIONS SONT A FAIRE ICI ---------------------------------------------------------
 		
 		#-----------------------------#
 		#  End of Training Algorithm  #
@@ -55,9 +69,12 @@ abstract: 'Lab 3: Regression'
 		iterationCount += 1
 ```
 
-(to be answered) Essayez de trouver des valeurs de maxIter, numFeatures et du learning rate menant a de bons resultats (vous pouvez mettre des captures d’´ecran dans votre rapport).
 
-### 1.2 Moindres carr´es (m´ethode \batch")
+#### Try to find values of `maxIter`, `numFeatures` and learning rate leading to good results (you can put screenshots in your report).
+
+(to be answered = Essayez de trouver des valeurs de maxIter, numFeatures et du learning rate menant a de bons resultats (vous pouvez mettre des captures d’´ecran dans votre rapport). 
+
+### 1.2 Least squares (batch method)
 
 ```python
 def train_LS():
