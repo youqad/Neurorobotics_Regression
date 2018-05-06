@@ -35,12 +35,12 @@ def phiOutput(input):
 	"""
 	global numFeatures, centers, widths
 	if np.size(input) == 1: 
-		phi = np.exp(-np.divide(np.square(input - centers), widths))	
+		phi = np.exp(-np.divide(np.square(input - centers), widths))
 	elif np.size(input) > 1:
 		numEvals = np.shape(input)[0]
 		# Repeat vectors to vectorize output calculation
 		inputMat = np.array([input, ] * numFeatures)
-		centersMat = np.array([centers, ] * numEvals).transpose() 
+		centersMat = np.array([centers, ] * numEvals).transpose()
 		widthsMat = np.array([widths, ] * numEvals).transpose() 
 		phi = np.exp(-np.divide(np.square(inputMat - centersMat), widthsMat))	
 	return phi
