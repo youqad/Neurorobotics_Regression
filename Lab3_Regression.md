@@ -22,7 +22,8 @@ abstract: 'Lab 3: Regression'
 ### Younesse Kaddar & Kexin Ren (**Lecturers**: )
 
 
-## 1
+## 1 Sommes pond´er´ees de fonctions Gaussiennes
+### 1.1 Descente de gradient (m´ethode incr´ementale)
 
 `def train_GD(maxIter):
 	global theta, xHistory, yHistory
@@ -52,3 +53,6 @@ abstract: 'Lab 3: Regression'
 		#  End of Training Algorithm  #
 		#-----------------------------#
 		iterationCount += 1`
+		
+		Essayez de trouver des valeurs de maxIter, numFeatures et du learning rate menant `a de bons r´esultats
+(vous pouvez mettre des captures d’´ecran dans votre rapport).
