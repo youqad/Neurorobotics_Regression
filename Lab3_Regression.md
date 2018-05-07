@@ -37,7 +37,7 @@ Many methods can be used to adjust the parameters $A$ and $\textbf{b}$, the most
 
 Oftentimes, linear models are not enough. In this lab, we will go over a few methods going further (while remaining in a non-probabilistic setting). The aim is to observe a set of data
 
-$$\lbrace (\textbf{x}^{(i)}, \textbf{y}^{(i)}) \rbrace$$
+$$\big\lbrace (\textbf{x}^{(i)}, \textbf{y}^{(i)}) \big\rbrace$$
 
 and design a model
 
@@ -140,24 +140,47 @@ The plot we obtained is shown as below. In the plot, the red line fits the obser
 
 <figure>
   <img src="https://i.gyazo.com/191fd0e322c9100f688cc9a01bf8e7ee.png" alt="Figure ">
-  <figcaption><em>Figure </em> - Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
   </figcaption>
 </figure>
 
-#### Try to find values of `maxIter`, `numFeatures` and learning rate leading to good results (you can put screenshots in your report).
+#### Try to find values of `maxIter`, `numFeatures` and of learning rate leading that lead to good results (you can put screenshots in your report).
 
 (to be answered = Essayez de trouver des valeurs de maxIter, numFeatures et du learning rate menant a de bons resultats (vous pouvez mettre des captures d’´ecran dans votre rapport).
 
 
-### 1.2 Least squares (batch method)
+## 1.2 Least squares (*batch method*)
 
-#### Instructions:
+This time, we consider a data set of size $N$:
 
-#### Open the `exoLS.py` file. Its structure is similar to that of `exoGD.py`, but the data is built at one time instead of being built up incrementally. These are the lines ```x = np.random.random (1000)``` (the number of data can be changed) and ```y = map(generateDataSample, x)```.
+$$\big\lbrace (\textbf{x}^{(i)}, \textbf{y}^{(i)}) \big\rbrace_{1 ≤ i ≤ N}$$
 
-#### Implement the function `train_LS()` which will calculate theta according to the least squares method.
+and we try to minimize the following error:
 
-Using batch method, with the given fomular of `A`, `b` and `θ`, we modified the function `train_RLS(maxIter)` as below:
+$$ε(θ) ≝ \frac 1 {2N} \sum\limits_{ i=1 }^N \left(y^{(i)} - f_θ\big(\textbf{x}^{(i)}\big)\right)^2$$
+
+A local minimum $θ$ corresponds to a zero gradient:
+
+$$\textbf{0} = \nabla ε(θ) = - \frac 1 N \sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) \left(y^{(i)} - ϕ(\textbf{x}^{(i)})^T θ\right)$$
+
+i.e.
+
+$$\underbrace{\left(\sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) ϕ(\textbf{x}^{(i)})^T \right)}_{≝ \; A}  \; θ = \underbrace{\sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) y^{(i)}}_{≝ \; b}$$
+
+Therefore:
+
+$$θ = A^\sharp b$$
+
+where $A^\sharp$ is the pseudo-inverse of $A$.
+
+## Instructions:
+
+Open the `exoLS.py` file. Its structure is similar to `exoGD.py`, but the data points are generated in one go instead of being built up incrementally. The lines where you can see that are the following one: `x = np.random.random(1000)` (the number of data points can be changed) and `y = map(generateDataSample, x)`.
+
+
+#### Implement the function `train_LS()` which computes `theta` according to the least squares method.
+
+In compliance with the batch method, with the given fomulas of `A`, `b` and `theta`, we modify the function `train_LS(maxIter)` as follows:
 
 ```python
 def train_LS():
@@ -172,8 +195,8 @@ def train_LS():
 	# LES MODIFICATIONS SONT A FAIRE ICI ---------------------------------------------------------
 
 	for i in range(1000):
-                A += np.outer(phiOutput(x[i]),phiOutput(x[i]))
-                b += phiOutput(x[i])*y[i]
+        A += np.outer(phiOutput(x[i]),phiOutput(x[i]))
+        b += phiOutput(x[i])*y[i]
 
 	theta = np.dot(np.linalg.pinv(A),b)
 
@@ -182,21 +205,64 @@ def train_LS():
 	#-----------------------------#
 ```
 
+A faster way to do it is as follows:
+
+```python
+def train_LS():
+	global x, y, numfeatures, theta			
+	#----------------------#
+	# # Training Algorithm ##
+	#----------------------#
+
+	Phi = phiOutput(x)
+	A = Phi.dot(Phi.T)
+	b = Phi.dot(y)
+
+	theta = np.dot(np.linalg.pinv(A),b)
+```
+
+Indeed,
+
+$$
+\begin{align*}
+A &= \sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) ϕ(\textbf{x}^{(i)})^T \\
+&= \underbrace{\begin{pmatrix} ϕ(\textbf{x}^{(1)}) \mid ⋯ \mid ϕ(\textbf{x}^{(N)}) \end{pmatrix}}_{= \; \texttt{phiOutput(x)}} \begin{pmatrix} ϕ(\textbf{x}^{(1)}) \mid ⋯ \mid ϕ(\textbf{x}^{(N)}) \end{pmatrix}^T \\
+&= \texttt{phiOutput(x)} \; \texttt{phiOutput(x)}^T
+\end{align*}
+$$
+
+and
+
+$$
+\begin{align*}
+b &= \sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) y^{(i)} \\
+&= \begin{pmatrix} ϕ(\textbf{x}^{(1)}) \mid ⋯ \mid ϕ(\textbf{x}^{(N)}) \end{pmatrix} \begin{pmatrix} y^{(1)} ⋯ y^{(N)} \end{pmatrix}^T\\
+&= \texttt{phiOutput(x)} \; y
+\end{align*}
+$$
+
+<figure>
+  <img src="https://i.gyazo.com/b7527861b6c7f6156cd713da958f1827.png" alt="Figure ">
+  <figcaption><em>Figure </em> - Least squares: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
+  </figcaption>
+</figure>
 
 #### Try to find new parameters that lead to good results.
 
 (to be done + plots)
 
 
-#### Now that you've been able to test an incremental method and a \ batch method, what do you think are the advantages and disadvantages of the least-squares approach?
-(to be answered) Maintenant que vous avez pu tester une m´ethode incr´ementale et une m´ethode \batch", quels sont
-selon vous les avantages et les inconv´enients de la m´ethode des moindres carr´es ?
+#### Now that you've been able to test an incremental method and a batch method, what do you think are the advantages and drawbacks of the least-squares approach?
 
-### 1.3 Recursive Least Squares Algorithm (incremental method)
+(to be answered)
 
-#### Instruction:
+## 1.3 Recursive Least Squares Algorithm (*incremental method*)
 
-#### Open the `exoRLS.py` file. Its structure is very similar to that of `exoGD.py`. Implement the `train_RLS()` function which will incrementally adjust `theta` by following the least-squares recursive method (without using Sherman-Morrison's lemma), and show in your report the results obtained.
+## Instruction:
+
+Open the `exoRLS.py` file. Its structure is very similar to `exoGD.py`.
+
+## Implement the `train_RLS()` function which will incrementally adjust `theta` by following the least-squares recursive method (without using Sherman-Morrison's lemma), and show in your report the obtained results.
 
 
 According to the fomulars given in the instruction for calculating `A`, `b` and `θ`, we modified the function `train_RLS(maxIter)` as below:

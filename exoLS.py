@@ -73,11 +73,11 @@ def train_LS():
 	#----------------------#
 	# # Training Algorithm ##
 	#----------------------#
-		
-	A = np.zeros(shape=(numFeatures, numFeatures))		
-	b = np.zeros(numFeatures)
 	
-	# LES MODIFICATIONS SONT A FAIRE ICI ---------------------------------------------------------
+	Phi = phiOutput(x)
+	A = Phi.dot(Phi.T)
+	b = Phi.dot(y)
+	theta = np.dot(np.linalg.pinv(A),b)
 
 	#-----------------------------#
 	# # End of Training Algorithm ##
