@@ -24,6 +24,7 @@ def generateDataSample(x):
 centers = np.linspace(0.0, 1.0, numFeatures)
 widthConstant = (1.0 - 0.0) / numFeatures / 10
 widths = np.ones(numFeatures,) * widthConstant
+alpha = 0.1
 
 def phiOutput(input):
 	"""
@@ -69,7 +70,7 @@ xHistory = []
 yHistory = []
 
 def train_GD(maxIter):
-	global theta, xHistory, yHistory
+	global theta, xHistory, yHistory, alpha
 	iterationCount = 0
 	while iterationCount < maxIter:			
 		#----------------------#
@@ -82,8 +83,22 @@ def train_GD(maxIter):
 		xHistory.append(x)
 		yHistory.append(y)
 						
-		# LES MODIFICATIONS SONT A FAIRE ICI ---------------------------------------------------------
-		
+		#----------------------#
+		#  Training Algorithm  #
+		#----------------------#
+		x = np.random.random()
+		y = generateDataSample(x)
+		xHistory.append(x)
+		yHistory.append(y)
+
+		#-----------------------------#
+		#         Modifications       #
+		#-----------------------------#
+		fval = f(x)
+		e = y - fval
+		delta = phiOutput(x)
+		theta += alpha*e*delta
+
 		#-----------------------------#
 		#  End of Training Algorithm  #
 		#-----------------------------#

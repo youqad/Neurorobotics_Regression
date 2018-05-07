@@ -90,26 +90,24 @@ $$θ^{(t+1)} = θ^{(t)} + α ε^{(t+1)}ϕ(\textbf{x}^{(t+1)})$$
 
 where $α > 0$ is a learning rate.
 
-## Questions
 
+## Instructions:
 
-## 1 Weighted sum of Gaussian functions
+Open the `exoGD.py file`. It contains the function `generateDataSample(x)` which makes it possible to generate a noise data $y$ for $\textbf{x} ∈ [0, 1]$ ($\dim(x) = 1$), the function `phiOutput(input)` which allows us to generate the vector $ϕ(\textbf{x})$ or a matrix of vectors $ϕ(\textbf{x}^{(i)})$ concatenated if the input is a tuple, and the function `f(input, *user_theta)` which makes it possible to compute $f(\textbf{x})$. The parameters used by `f` are either the global variable `theta`, or an input value `*user_theta`. The number of coordinates of $ϕ(\textbf{x})$ (that is, the number $k$ of Gaussian functions) is defined by the global variable `numFeatures`.
 
-### 1.1 Gradient descent (incremental method)
-
-#### Instructions:
-
-#### Open the `exoGD.py file`. It contains the function `generateDataSample(x)` which makes it possible to generate a noise data `y` for `x` ∈ [$0$, $1$] (dim(`x`) = $1$), the function `phiOutput (input)` which allows to generate the vector `φ(x)` or a matrix of vectors `φ(x(i))` concatenated if the input is a tuple, and the function `f(input, * user_theta)` which makes it possible to calculate f(x). Parameters used by `f` are either the global variable `theta`, or a value `*user_theta` provided in input. Number of components of `φ(x)` (that is, the number `k` of Gaussian functions) is defined by the global variable `numFeatures`.
-
-#### Implement the `train_GD(maxIter)` function that will adjust the `theta` value by gradient descent from a number of data equal to `maxIter`. When the file is executed, the observed data is displayed by dots, and the red line is the function "learned", that is, the function `f` corresponding to the parameters `theta` adjusted by `train_GD(maxIter)`. Other curves correspond to the different `f_θi(x)` and show how the function `f` is decomposed.
+### Implement the `train_GD(maxIter)` function that will adjust the `theta` value by gradient descent from a data number equal to `maxIter`. When the file is executed, the observed data is displayed by dots, and the red curve is the "learned" function, that is, the function `f` corresponding to the parameters `theta` adjusted by `train_GD(maxIter)`. Other curves correspond to the different $f_{θ_i}(\textbf{x})$ and show how the function `f` is decomposed.
 
 
 According to the fomulas given in the tutorial for calculating `f`, `ε`, `∇` and `θ`,  we modified the original codes as follows for `train_GD(maxIter)` function:
 
 
 ```python
+    alpha = 0.1
+
+    # [...]
+
 	def train_GD(maxIter):
-	global theta, xHistory, yHistory
+	global theta, xHistory, yHistory, alpha
 	iterationCount = 0
 
 		# Draw a random sample on the interval [0,1]
@@ -126,7 +124,7 @@ According to the fomulas given in the tutorial for calculating `f`, `ε`, `∇` 
 		#-----------------------------#
 		#         Modification        #
 		#-----------------------------#
-		fval = f(x,theta)
+		fval = f(x)
 		e = y - fval
 		delta = phiOutput(x)
 		theta += alpha*e*delta
@@ -140,8 +138,11 @@ According to the fomulas given in the tutorial for calculating `f`, `ε`, `∇` 
 
 The plot we obtained is shown as below. In the plot, the red line fits the observed points well.
 
-(add figure)
-
+<figure>
+  <img src="https://i.gyazo.com/191fd0e322c9100f688cc9a01bf8e7ee.png" alt="Figure ">
+  <figcaption><em>Figure </em> - Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
+  </figcaption>
+</figure>
 
 #### Try to find values of `maxIter`, `numFeatures` and learning rate leading to good results (you can put screenshots in your report).
 
