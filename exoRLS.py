@@ -72,7 +72,7 @@ def train_RLS(maxIter):
 	## Initialize A and b ##
 	A = np.zeros(shape=(numFeatures,numFeatures))
 	b = np.zeros( numFeatures )
-	
+
 	iterationCount = 0
 	# Begin training
 	while iterationCount < maxIter:
@@ -87,16 +87,17 @@ def train_RLS(maxIter):
 		## Training Algorithm ##
 		#----------------------#
 
-		theta = np.zeros((numFeatures,))
-
-		# LES MODIFICATIONS SONT A FAIRE ICI ---------------------------------------------------------
-		
+		phi = phiOutput(x)
+		A += np.outer(phi, phi)
+		b += phi.dot(y)	
+			
 		#-----------------------------#
 		## End of Training Algorithm ##
 		#-----------------------------#
 
 		iterationCount+=1
-
+	
+	theta = np.dot(np.linalg.pinv(A),b)
 
 train_RLS(1000)
 

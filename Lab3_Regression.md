@@ -265,7 +265,7 @@ Open the `exoRLS.py` file. Its structure is very similar to `exoGD.py`.
 ## Implement the `train_RLS()` function which will incrementally adjust `theta` by following the least-squares recursive method (without using Sherman-Morrison's lemma), and show in your report the obtained results.
 
 
-According to the fomulars given in the instruction for calculating `A`, `b` and `θ`, we modified the function `train_RLS(maxIter)` as below:
+According to the fomulars given in the instruction to compute `A`, `b` and `theta`, we modify the function `train_RLS(maxIter)` as below:
 
 ```python
 def train_RLS(maxIter):
@@ -289,46 +289,45 @@ def train_RLS(maxIter):
 		## Training Algorithm ##
 		#----------------------#
 
-		theta = np.zeros((numFeatures,))
-
-		# LES MODIFICATIONS SONT A FAIRE ICI ---------------------------------------------------------
-
-		A += np.outer(phiOutput(x),phiOutput(x))
-		b += phiOutput(x)*y
-		theta = np.dot(np.linalg.pinv(A),b)
+		phi = phiOutput(x)
+		A += np.outer(phi, phi)
+		b += phi.dot(y)
 
 		#-----------------------------#
 		## End of Training Algorithm ##
 		#-----------------------------#
 
 		iterationCount+=1
+
+	theta = np.dot(np.linalg.pinv(A),b)
 ```
 
 
-Without using Sherman-Morrison's lemma, the plot we obtained is shown as following:
+Without using Sherman-Morrison's lemma, the plot we obtained is shown as follows:
 
-(add plot)
-
+<figure>
+  <img src="https://i.gyazo.com/b1b42b5ff320bca93951d8a3dfe854b4.png" alt="Figure ">
+  <figcaption><em>Figure </em> - Recursive Least squares: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
+  </figcaption>
+</figure>
 
 #### Open the `exoRLS2.py` file, and this time implement the least recursive square method using the Sherman-Morrison lemma.
 
-First, we defined pseudo-inversed A `A#` as
+First, we define pseudo-inversed $A^{\sharp}$ as
 
 ```python
-AT = np.eye(numFeatures)
+A_sharp = np.eye(numFeatures)
 ```
 
-Then, with the fomulars given before and fomualr of Sherman-Morrison lemma, we modified the `train_RLS(maxIter)` function as below:
+Then, with the formulas given before and the Sherman-Morrison lemma, we modify the `train_RLS(maxIter)` function as below:
 
 ```python
 def train_RLS(maxIter):
 	global theta, xHistory, yHistory
 
-	## Initialize A and b ##
-	Ainv = np.matrix(np.identity(numFeatures))
+	## Initialize b and A_sharp ##
 	b = np.zeros( numFeatures )
-
-	AT = np.eye(numFeatures)
+	A_sharp = np.eye(numFeatures)
 
 	iterationCount = 0
 	# Begin training
@@ -344,28 +343,28 @@ def train_RLS(maxIter):
 		## Training Algorithm ##
 		#----------------------#
 
-		theta = np.zeros((numFeatures,))
+		phi = phiOutput(x)
 
-		# LES MODIFICATIONS SONT A FAIRE ICI ---------------------------------------------------------
-
-                u = phiOutput(x)
-                uT = np.transpose(u)
-
-		AT = AT - np.dot(np.dot(AT,np.outer(u,uT)),AT)/(1+np.dot(np.dot(uT,AT),u))
-		b += phiOutput(x)*y
-
-		theta = np.dot(AT,b)
+		A_sharp -= A_sharp.dot(np.outer(phi, phi).dot(A_sharp))/(1+phi.dot(A_sharp.dot(phi))
+		b += phi.dot(y)
 
 		#-----------------------------#
 		## End of Training Algorithm ##
 		#-----------------------------#
 
 		iterationCount+=1
+
+	theta = np.dot(A_sharp,b)
 ```
 
 With the Sherman-Morrison's lemma, the plot we obtained is shown as following:
 
-(add plot)
+<figure>
+  <img src="https://i.gyazo.com/fb4ee0956b542d95c28dd2d2fad4c156.png" alt="Figure ">
+  <figcaption><em>Figure </em> - Recursive Least squares with Sherman-Morrison: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
+  </figcaption>
+</figure>
+
 
 
 #### Compare the two variants (with or without the Sherman-Morrison lemma). Which is the most accurate, which is the fastest, and why (can you include in your report measurement of computing time)?

@@ -69,10 +69,10 @@ yHistory = []
 def train_RLS(maxIter):	
 	global theta, xHistory, yHistory
 			
-	## Initialize A and b ##
-	Ainv = np.matrix(np.identity(numFeatures))
+	## Initialize b and A_sharp ##
 	b = np.zeros( numFeatures )
-	
+	A_sharp = np.eye(numFeatures)
+
 	iterationCount = 0
 	# Begin training
 	while iterationCount < maxIter:
@@ -87,15 +87,18 @@ def train_RLS(maxIter):
 		## Training Algorithm ##
 		#----------------------#
 		
-		theta = np.zeros((numFeatures,))
+		phi = phiOutput(x)
 
-		# LES MODIFICATIONS SONT A FAIRE ICI ---------------------------------------------------------
+		A_sharp -= A_sharp.dot(np.outer(phi, phi).dot(A_sharp))/(1+phi.dot(A_sharp.dot(phi))
+		b += phi.dot(y)
 		
 		#-----------------------------#
 		## End of Training Algorithm ##
 		#-----------------------------#
 
 		iterationCount+=1
+	
+	theta = np.dot(A_sharp,b)
 
 
 train_RLS(1000)
