@@ -371,7 +371,7 @@ Open the `exoRLS.py` file. Its structure is very similar to `exoGD.py`.
 ## Implement the `train_RLS()` function which will incrementally adjust `theta` by following the least-squares recursive method (without using Sherman-Morrison's lemma), and show in your report the obtained results.
 
 
-According to the fomulars given in the instruction to compute `A`, `b` and `theta`, we modify the function `train_RLS(maxIter)` as below:
+**Without Sherman-Morrison's lemma:** According to the formulas given in the instruction to compute `A`, `b` and `theta`, we modify the function `train_RLS(maxIter)` as below:
 
 ```python
 def train_RLS(maxIter):
@@ -409,11 +409,11 @@ def train_RLS(maxIter):
 ```
 
 
-Without using Sherman-Morrison's lemma, the plot we obtained is shown as follows:
+The plot we obtain is shown below:
 
 <figure>
   <img src="https://i.gyazo.com/b1b42b5ff320bca93951d8a3dfe854b4.png" alt="Figure ">
-  <figcaption><em>Figure </em> - Recursive Least squares: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
+  <figcaption><em>Figure </em> - Recursive Least squares without Sherman-Morrison's lemma: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
   </figcaption>
 </figure>
 
@@ -463,10 +463,10 @@ def train_RLS(maxIter):
 	theta = np.dot(A_sharp,b)
 ```
 
-With the Sherman-Morrison's lemma, the plot we obtained is shown as following:
+With the Sherman-Morrison lemma, the plot we obtain is shown below:
 
 <figure>
-  <img src="https://i.gyazo.com/fb4ee0956b542d95c28dd2d2fad4c156.png" alt="Figure ">
+  <img src="https://i.gyazo.com/f016e9a45a0743a75c1cdcbdeb06b240.png" alt="Figure ">
   <figcaption><em>Figure </em> - Recursive Least squares with Sherman-Morrison: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
   </figcaption>
 </figure>
