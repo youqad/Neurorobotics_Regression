@@ -170,6 +170,8 @@ We first tested the effect of `maxIter` by setting `maxIter` = $100$, $1000$ (or
   </figcaption>
 </figure>
 
+
+
 We can see that, ...
 
 
@@ -204,6 +206,7 @@ Then, we tested the effect of `numFeatures` by setting `numFeatures` = $5$, $10$
 </figure>
 
 
+
 We can see that, ...
 
 
@@ -228,6 +231,7 @@ Finally, we tested the effect of `alpha` by setting `alpha` = $0.1$, $0.5$, and 
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `alpha` = $0.9$ (`maxIter` = $1000$, `numFeatures` = $10$)
    </figcaption>
  </figure>
+
 
 
 We can see that, ...
