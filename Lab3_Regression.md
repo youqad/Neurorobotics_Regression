@@ -136,7 +136,7 @@ According to the fomulas given in the tutorial for calculating `f`, `ε`, `∇` 
 		iterationCount += 1
 ```
 
-With `maxIter` = $1000$, `numFeatures` = $10$ and `alpha` = $0.9$, the plot we obtained is shown as below. 
+With `maxIter` = $1000$, `numFeatures` = $10$ and `alpha` = $0.9$, the plot we obtained is shown as below.
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png?raw=true" alt="Figure ">
@@ -227,7 +227,7 @@ Finally, we tested the effect of `alpha` by setting `alpha` = $0.1$, $0.5$, and 
 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original?raw=true.png" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `alpha` = $0.9$ (`maxIter` = $1000$, `numFeatures` = $10$)
   </figcaption>
 </figure>
