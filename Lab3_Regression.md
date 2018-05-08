@@ -155,21 +155,21 @@ We first tested the effect of `maxIter` by setting `maxIter` = $100$, $1000$ (or
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_mI=100.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `maxIter` = $100$ (`numFeatures` = $10$, `alpha` = $0.9$)
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{maxIter} = 100$ ($\texttt{numFeatures} = 10$, $\texttt{alpha} = 0.9$)
   </figcaption>
 </figure>
 
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `maxIter` = $1000$ (`numFeatures` = $10$, `alpha` = $0.9$)
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with with $\texttt{maxIter} = 1000$ ($\texttt{numFeatures} = 10$, $\texttt{alpha} = 0.9$
   </figcaption>
 </figure>
 
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_mI=10000.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with`maxIter` = $10000$ (`numFeatures` = $10$, `alpha` = $0.9$)
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{maxIter} = 10000$ ($\texttt{numFeatures} = 10$, $\texttt{alpha} = 0.9$
   </figcaption>
 </figure>
 
@@ -183,28 +183,28 @@ Then, we tested the effect of `numFeatures` by setting `numFeatures` = $5$, $10$
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_nF=5.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `numFeatures` = $5$ (`maxIter` = $1000$, `alpha` = $0.9$)
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{numFeatures} = 5$ ($\texttt{maxIter} = 1000$, $\texttt{alpha} = 0.9$
   </figcaption>
 </figure>
 
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `numFeatures` = $10$ (`maxIter` = $1000$, `alpha` = $0.9$)
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{numFeatures} = 10$ ($\texttt{maxIter} = 1000$, $\texttt{alpha} = 0.9$
   </figcaption>
 </figure>
 
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_nF=15.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `numFeatures` = $15$ (`maxIter` = $1000$, `alpha` = $0.9$)
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{numFeatures} = 15$ ($\texttt{maxIter} = 1000$, $\texttt{alpha} = 0.9$
   </figcaption>
 </figure>
 
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_nF=30.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `numFeatures` = $30$ (`maxIter` = $1000$, `alpha` = $0.9$)
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{numFeatures} = 30$ ($\texttt{maxIter} = 1000$, $\texttt{alpha} = 0.9$
   </figcaption>
 </figure>
 
@@ -217,21 +217,21 @@ Finally, we tested the effect of `alpha` by setting `alpha` = $0.1$, $0.5$, and 
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_a=0.1.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `alpha` = $0.1$ (`maxIter` = $1000$, `numFeatures` = $10$)
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{alpha} = 0.1$ ($\texttt{maxIter} = 1000$, $\texttt{numFeatures} = 10$
   </figcaption>
 </figure>
 
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_a=0.5.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `alpha` = $0.5$ (`maxIter` = $1000$, `numFeatures` = $10$)
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{alpha} = 0.5$ ($\texttt{maxIter} = 1000$, $\texttt{numFeatures} = 10$
   </figcaption>
 </figure>
 
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `alpha` = $0.9$ (`maxIter` = $1000$, `numFeatures` = $10$)
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{alpha} = 0.9$ ($\texttt{maxIter} = 1000$, $\texttt{numFeatures} = 10$
   </figcaption>
 </figure>
 
@@ -345,7 +345,24 @@ $$
 
 #### Now that you've been able to test an incremental method and a batch method, what do you think are the advantages and drawbacks of the least-squares approach?
 
-We first tested the execution time of the two methods, and we found that, with the same parameters, the batch method (with given codes) is slower than the incremental method. We also tested the accuracy of the two methods by calculating the sum of the errors (absolute values), we found that, with the same parameters, the batch method is more accurate than the incremental method. Moreover, with very high number of sample points, the difference of the accuracy between the two methods became very small, meaning that the incremental method may require a great number of instances to learn.
+
+We first tested the execution time of the two methods (see chart below, `alpha` = 0.1), and we found that, with the same parameters, the batch method (with given codes) is slower than the incremental method. 
+
+
+| Method  | `numFeatures` = $5$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $10000$ |
+| ------------- | ------------- | ------------- | ------------- |
+| incremental  | $0.031$ sec | $0.031$ sec | $0.297$ sec |
+| batch  | $0.047$ sec | $0.032$ sec | $0.391$ sec |
+
+
+We also tested the accuracy of the two methods by calculating the sum of the errors (absolute values), as shown in the following chart (`alpha` = 0.1).  We found that, with the same parameters, the batch method is more accurate than the incremental method. 
+
+
+| Method  | `numFeatures` = $5$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $10000$ |
+| ------------- | ------------- | ------------- | ------------- |
+| incremental  | $115$ | $72$ | $549$ |
+| batch  | $95$ | $53$  | $508$ |
+
 
 ## 1.3 Recursive Least Squares Algorithm (*incremental method*)
 
