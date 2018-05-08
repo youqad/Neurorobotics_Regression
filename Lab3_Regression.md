@@ -144,6 +144,13 @@ With `maxIter` = $1000$ and `numFeatures` = $10$, the plot we obtained is shown 
   </figcaption>
 </figure>
 
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ (`maxIter` = $1000$ and `numFeatures` = $10$)
+  </figcaption>
+</figure>
+
 #### Try to find values of `maxIter`, `numFeatures` and of learning rate leading that lead to good results (you can put screenshots in your report).
 
 (to be answered = Essayez de trouver des valeurs de maxIter, numFeatures et du learning rate menant a de bons resultats (vous pouvez mettre des captures d’´ecran dans votre rapport).
