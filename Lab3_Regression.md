@@ -349,6 +349,21 @@ We first tested the execution time of the two methods, and we found that, with t
 
 ## 1.3 Recursive Least Squares Algorithm (*incremental method*)
 
+The recursive least squares algorithm is another incremental method in which $A$ and $b$ are computed at each iteration on a new data point (as $A$ and $b$ can be regarded as sums over the data points):
+
+$$A^{(t+1)} = A^{(t)} + ϕ(\textbf{x}^{(t+1)})ϕ(\textbf{x}^{(t+1)})^T\\
+b^{(t+1)} = b^{(t)} + ϕ(\textbf{x}^{(t+1)}) y^{(t+1)}$$
+
+The parameters
+
+- can be directly obtained with:
+
+    $$θ^{(t+1)} = \big(A^{(t+1)}\big)^\sharp \; b^{(t+1)}$$
+
+- can be estimated with resort to the Sherman-Morrison lemma (provided $A^{(0)}$ is non-zero):
+
+    $$\left(A + uv^T\right)^\sharp = A^\sharp - \frac{A^\sharp uv^T A^\sharp}{1+v^T A^\sharp u}$$
+
 ## Instruction:
 
 Open the `exoRLS.py` file. Its structure is very similar to `exoGD.py`.
