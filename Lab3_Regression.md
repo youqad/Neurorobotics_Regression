@@ -379,22 +379,22 @@ The plots of LS method with different values for the parameters `numFeatures` an
 </figure>
 
 
-We summarized the accuracy regarding the values of `numFeatures` and `maxIter` in the following figures:
+We summarized the average error regarding the values of `numFeatures` and `maxIter` in the following figures:
 
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/nI.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Accuracy regarding different $\texttt{numFeatures}$ values
+  <figcaption><em>Figure </em> - Average error for different $\texttt{numFeatures}$ values
   </figcaption>
 </figure>
 
 
-The figures all above illustrate that higher number of features contribute to higher accuracy, and when the number of features exceed 15, the improvement in the accuracy is not significant anymore. Thus, for the sake of saving time, we may infer that a good value for `numFeatures` could be 15.
+The figures all above illustrate that higher number of features contribute to lower average error, and when the number of features exceed 15, the improvement of the accuracy is not significant anymore. Thus, for the sake of saving time, we may infer that a good value for `numFeatures` could be 15.
 
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/nI.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Accuracy regarding different $\texttt{maxIter}$ values
+  <figcaption><em>Figure </em> - Average error for different $\texttt{maxIter}$ values
   </figcaption>
 </figure>
 
@@ -419,7 +419,7 @@ We also tested the accuracy of the two methods by calculating average error (i.e
 | incremental  | $0.115$ | $0.072$ | $0.055$ |
 | batch  | $0.095$ | $0.053$  | $0.051$ |
 
-Moreover, when the number of data points is very high, the difference between the accuracy of the two methods became small, inferring that the incremental method may require lots of data points for a good accuracy.
+Moreover, when the number of data points is very high, the difference between the average error of the two methods became small, inferring that the incremental method may require lots of data points for a good accuracy.
 
 Besides, when solving for the linear system in one go (our second version codes), with small number of points (about below $1000$), GD method is faster; however, with high number of points, LS is the faster one. Thus, it becomes more advantageous for a larger number of data points, as it relies on the fact that numpy is faster than regular python, as it is implemented in C under the hood.
 
