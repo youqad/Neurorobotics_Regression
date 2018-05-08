@@ -177,7 +177,13 @@ We first tested the effect of `maxIter` by setting `maxIter` = $100$, $1000$ (or
 
 
 
-We can see that, ...
+The number of data points `maxIter` is also the number of times we update the $θ$ estimator along the opposite of the gradient of the error $y - f_θ(\textbf{x})$. We can see that:
+
+- When `maxIter` $=100$: there hasn't been enough data points/updates of $θ$ for the predictor $f(\textbf) ≝ ϕ(\textbf{x})^\T θ$ to match the shape of the $y$ output (especially when $\textbf{x}$ ranges from $0$ to $0.5$): too few data points leads to **underfitting**
+
+- When `maxIter` $=10000$: the predictor $f(\textbf)$ doesn't match the output as well as when `maxIter` $=1000$, especially when $\textbf{x}$ ranges from $0.6$ to $1$: too many data points leads to **overfitting**
+
+The best compromise is met for an intermediary number of data points (as it happens: when `maxIter` $=1000$ here).
 
 
 Then, we tested the effect of `numFeatures` by setting `numFeatures` = $5$, $10$ (original), $15$ and $30$, keeping `maxIter` = $1000$ and `alpha` = $0.9$. The plots are shown as follows:
@@ -212,7 +218,7 @@ Then, we tested the effect of `numFeatures` by setting `numFeatures` = $5$, $10$
 
 
 
-We can see that, as the number of features increases, the redline fits the sample points better at first. But with too many number of features, the redline overfits the sample points. Thus, using an appropriate number of features is very important.
+We can see that, as the number of features increases, the redline fits the sample points better at first. But with too many number of features, the redline overfits the sample points. Indeed: even though the predictor matches the data better for `numFeatures` $= 15$ than `numFeatures` $= 10$ when $\textbf{x} ≥ 0.7$ (the bell-shaped curve is perfectly fitted), the overfitting is already conspicuous at $15$ features for $\textbf{x} ≤ 0.5$: the predictor tends to overcomplicate the shape of the output, that is seen to be smoothly approximable. Thus, using an appropriate number of features is very important.
 
 
 Finally, we tested the effect of `alpha` by setting `alpha` = $0.1$, $0.5$, and $0.9$, keeping `maxIter` = $1000$ and `numFeatures` = $10$. The plots are shown as follows:
@@ -239,7 +245,13 @@ Finally, we tested the effect of `alpha` by setting `alpha` = $0.1$, $0.5$, and 
 
 
 
-We can see that, ...
+Let us recall that $α$ is the learning rate: that is, $α$ specifies how much one goes along the opposite direction of the gradient (toward a local minimum) at each step. We can see that:
+
+- for a value of $α$ too low: the steps along the opposite of the gradient have been so small that the prediction error $y - ϕ(\textbf{x})^\T θ$ at the end of the iterations hasn't been locally minimized yet
+
+- for a value of $α$ too high: the steps along the opposite of the gradient are so big than the local minimum might have been missed by a step going "too far"
+
+Again, we have to strike a balance between a low learning rate (more likely to hit a local minimum, but slower algorithm) and a high one (faster algorithm, but more likely to miss the targeted local minimum by making steps along the gradient that are too big).
 
 
 ## 1.2 Least squares (*batch method*)
@@ -348,7 +360,7 @@ $$
 #### Now that you've been able to test an incremental method and a batch method, what do you think are the advantages and drawbacks of the least-squares approach?
 
 
-We first tested the execution time of the two methods (see chart below, `alpha` = 0.1), and we found that, with the same parameters, the batch method (with given codes) is slower than the incremental method. 
+We first tested the execution time of the two methods (see chart below, `alpha` = 0.1), and we found that, with the same parameters, the batch method (with given codes) is slower than the incremental method.
 
 
 | Method  | `numFeatures` = $5$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $10000$ |
@@ -357,7 +369,7 @@ We first tested the execution time of the two methods (see chart below, `alpha` 
 | batch  | $0.047$ sec | $0.032$ sec | $0.391$ sec |
 
 
-We also tested the accuracy of the two methods by calculating the sum of the errors (absolute values), as shown in the following chart (`alpha` = 0.1).  We found that, with the same parameters, the batch method is more accurate than the incremental method. 
+We also tested the accuracy of the two methods by calculating the sum of the errors (absolute values), as shown in the following chart (`alpha` = 0.1).  We found that, with the same parameters, the batch method is more accurate than the incremental method.
 
 
 | Method  | `numFeatures` = $5$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $10000$ |
