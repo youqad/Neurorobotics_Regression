@@ -81,17 +81,19 @@ y = map(generateDataSample, x)
 
 def train_LWLS():
 	global x, y, numfeatures, theta		
-	numDataPoints = np.size(x)				
 	
-	#----------------------#		
+	#----------------------#
 	## Training Algorithm ##
-	#----------------------#	
+	#----------------------#
+
+	Phi = phiOutput(x)
+	W = w(x)
 
 	for k in range(numFeatures):
-		
-		# LES MODIFICATIONS SONT A FAIRE ICI ---------------------------------------------------------
-	
-		pass
+		Wphi = W.dot(np.diag(Phi[k]))
+		A_i = Wphi.dot(W.T)
+		b_i = Wphi.dot(y)
+		theta[:,k] = np.dot(np.linalg.pinv(A_i),b_i)
 	
 	#-----------------------------#	
 	## End of Training Algorithm ##	

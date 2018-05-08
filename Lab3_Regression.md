@@ -508,6 +508,66 @@ Open the file `exoLWLS.py`. It contains the functions `generateDataSample(x)`, `
 
 ## Implement the function `train_LWLS()` which computes `theta`. Again, show the results in your report.
 
+Similarly to what we did for the Least Squares method:
+
+
+$$
+\begin{align*}
+A &= \sum\limits_{ j=1 }^N ϕ_i(\textbf{x}^{(j)}) \, w(\textbf{x}^{(j)}) \, w(\textbf{x}^{(j)})^\T \\
+&= \underbrace{\begin{pmatrix}
+    x_1^{(1)}  & ⋯ & x_1^{(N)} \\
+    1  & ⋯ & 1 \\
+\end{pmatrix}}_{≝ \; W(\textbf{x})} \underbrace{\begin{pmatrix}
+    ϕ_i(\textbf{x}^{(1)})  &  \\
+      &  \ddots \\
+      & & ϕ_i(\textbf{x}^{(N)})
+\end{pmatrix}}_{≝ \; \texttt{diag}\big(ϕ_i(\textbf{x}^{(j)})\big)_{1 ≤ j ≤ N}} \begin{pmatrix}
+    x_1^{(1)}  & ⋯ & x_1^{(N)} \\
+    1  & ⋯ & 1 \\
+\end{pmatrix}^\T \\
+&= W(\textbf{x}) \; \texttt{diag}\big(ϕ_i(\textbf{x}^{(j)})\big)_{j} \; W(\textbf{x})^\T
+\end{align*}
+$$
+
+and likewise:
+
+$$
+b = W(\textbf{x}) \; \texttt{diag}\big(ϕ_i(\textbf{x}^{(j)})\big)_{j} \; \textbf{y}
+$$
+
+which yields:
+
+```python
+def train_LWLS():
+	global x, y, numfeatures, theta		
+
+	#----------------------#
+	## Training Algorithm ##
+	#----------------------#
+
+	Phi = phiOutput(x)
+	W = w(x)
+
+	for k in range(numFeatures):
+		Wphi = W.dot(np.diag(Phi[k]))
+		A_i = Wphi.dot(W.T)
+		b_i = Wphi.dot(y)
+		theta[:,k] = np.dot(np.linalg.pinv(A_i),b_i)
+
+	#-----------------------------#
+	## End of Training Algorithm ##
+	#-----------------------------#
+
+train_LWLS()
+```
+
+<figure>
+  <img src="https://i.gyazo.com/17399b465acd7a18bfd56c9d17a817c6.png" alt="Figure ">
+  <figcaption><em>Figure </em> - Locally-Weighted Least squares: Plot of $f$ (in bolded red)
+  </figcaption>
+</figure>
+
+
 ## For similar parameters, compare the results obtained with the `LWLS` method and the least squares one (`exoLS.py`). Which method is the fastest, and which one gives the best results according to you? What are the main differences if we were to increase `numfeatures` for example?
 
 ## Depending on the circumstances, how would you choose between an *incremental* method and a *batch* one?
