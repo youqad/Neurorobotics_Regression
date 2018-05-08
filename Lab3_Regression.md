@@ -138,11 +138,11 @@ According to the fomulas given in the tutorial for calculating `f`, `ε`, `∇` 
 
 With `maxIter` = $1000$, `numFeatures` = $10$ and `alpha` = $0.9$, the plot we obtained is shown as below. 
 
- <figure>
+<figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ (`maxIter` = $1000$, `numFeatures` = $10$, `alpha` = $0.9$)
-   </figcaption>
- </figure>
+  </figcaption>
+</figure>
 
 
 #### Try to find values of `maxIter`, `numFeatures` and of learning rate leading that lead to good results (you can put screenshots in your report).
@@ -150,7 +150,7 @@ With `maxIter` = $1000$, `numFeatures` = $10$ and `alpha` = $0.9$, the plot we o
 We first tested the effect of `maxIter` by setting `maxIter` = $100$, $1000$ (original), and $10000$, keeping `numFeatures` = $10$ and `alpha` = $0.9$. The plots are shown as follows:
 
 
- <figure>
+<figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_mI=100.png" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `maxIter` = $100$ (`numFeatures` = $10$, `alpha` = $0.9$)
   </figcaption>
@@ -207,7 +207,7 @@ Then, we tested the effect of `numFeatures` by setting `numFeatures` = $5$, $10$
 
 
 
-We can see that, ...
+We can see that, as the number of features increases, the redline fits the sample points better at first. But with too many number of features, the redline overfits the sample points. Thus, using an appropriate number of features is very important.
 
 
 Finally, we tested the effect of `alpha` by setting `alpha` = $0.1$, $0.5$, and $0.9$, keeping `maxIter` = $1000$ and `numFeatures` = $10$. The plots are shown as follows:
@@ -229,8 +229,8 @@ Finally, we tested the effect of `alpha` by setting `alpha` = $0.1$, $0.5$, and 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `alpha` = $0.9$ (`maxIter` = $1000$, `numFeatures` = $10$)
-   </figcaption>
- </figure>
+  </figcaption>
+</figure>
 
 
 
@@ -337,31 +337,14 @@ $$
 
 #### Try to find new parameters that lead to good results.
 
-(to be done + plots)
+(plots uploaded)
 
 
 #### Now that you've been able to test an incremental method and a batch method, what do you think are the advantages and drawbacks of the least-squares approach?
 
-(to be answered)
+We first tested the execution time of the two methods, and we found that, with the same parameters, the batch method (with given codes) is slower than the incremental method. We also tested the accuracy of the two methods by calculating the sum of the errors (absolute values), we found that, with the same parameters, the batch method is more accurate than the incremental method. Moreover, with very high number of sample points, the difference of the accuracy between the two methods became very small, meaning that the incremental method may require a great number of instances to learn.
 
 ## 1.3 Recursive Least Squares Algorithm (*incremental method*)
-
-The recursive least squares algorithm is another incremental method in which $A$ and $b$ are computed at each iteration on a new data point (as $A$ and $b$ can be regarded as sums over the data points):
-
-$$A^{(t+1)} = A^{(t)} + ϕ(\textbf{x}^{(t+1)})ϕ(\textbf{x}^{(t+1)})^T\\
-b^{(t+1)} = b^{(t)} + ϕ(\textbf{x}^{(t+1)}) y^{(t+1)}$$
-
-The parameters
-
-- can be directly obtained with:
-
-    $$θ^{(t+1)} = \big(A^{(t+1)}\big)^\sharp \; b^{(t+1)}$$
-
-- can be estimated with resort to the Sherman-Morrison lemma (provided $A^{(0)}$ is non-zero):
-
-    $$\left(A + uv^T\right)^\sharp = A^\sharp - \frac{A^\sharp uv^T A^\sharp}{1+v^T A^\sharp u}$$
-
-
 
 ## Instruction:
 
@@ -370,7 +353,7 @@ Open the `exoRLS.py` file. Its structure is very similar to `exoGD.py`.
 ## Implement the `train_RLS()` function which will incrementally adjust `theta` by following the least-squares recursive method (without using Sherman-Morrison's lemma), and show in your report the obtained results.
 
 
-**Without Sherman-Morrison's lemma:** According to the formulas given in the instruction to compute `A`, `b` and `theta`, we modify the function `train_RLS(maxIter)` as below:
+According to the fomulars given in the instruction to compute `A`, `b` and `theta`, we modify the function `train_RLS(maxIter)` as below:
 
 ```python
 def train_RLS(maxIter):
@@ -408,11 +391,11 @@ def train_RLS(maxIter):
 ```
 
 
-The plot we obtain is shown as follows:
+Without using Sherman-Morrison's lemma, the plot we obtained is shown as follows:
 
 <figure>
   <img src="https://i.gyazo.com/b1b42b5ff320bca93951d8a3dfe854b4.png" alt="Figure ">
-  <figcaption><em>Figure </em> - Recursive Least squares without Sherman-Morrison's lemma: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
+  <figcaption><em>Figure </em> - Recursive Least squares: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
   </figcaption>
 </figure>
 
@@ -450,7 +433,7 @@ def train_RLS(maxIter):
 
 		phi = phiOutput(x)
 
-		A_sharp -= A_sharp.dot(np.outer(phi, phi).dot(A_sharp))/(1+phi.dot(A_sharp.dot(phi)))
+		A_sharp -= A_sharp.dot(np.outer(phi, phi).dot(A_sharp))/(1+phi.dot(A_sharp.dot(phi))
 		b += phi.dot(y)
 
 		#-----------------------------#
@@ -462,10 +445,10 @@ def train_RLS(maxIter):
 	theta = np.dot(A_sharp,b)
 ```
 
-With the Sherman-Morrison lemma, the plot we obtained is shown as following:
+With the Sherman-Morrison's lemma, the plot we obtained is shown as following:
 
 <figure>
-  <img src="https://i.gyazo.com/f016e9a45a0743a75c1cdcbdeb06b240.png" alt="Figure ">
+  <img src="https://i.gyazo.com/fb4ee0956b542d95c28dd2d2fad4c156.png" alt="Figure ">
   <figcaption><em>Figure </em> - Recursive Least squares with Sherman-Morrison: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
   </figcaption>
 </figure>
@@ -477,4 +460,6 @@ With the Sherman-Morrison lemma, the plot we obtained is shown as following:
 (to be answered) Comparez les deux variantes (avec ou sans le lemme de Sherman-Morrison). Quelle est la plus pr´ecise,
 quelle est la plus rapide, et pourquoi (vous pouvez inclure dans votre rapport des mesures de temps de calcul) ?
 
-## 2. LWLS: Locally-Weighted Least-Squares (*batch method*)
+## 2 LWLS: Locally-Weighted Least-Squares (batch method)
+
+(to be answered)
