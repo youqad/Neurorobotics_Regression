@@ -457,8 +457,21 @@ With the Sherman-Morrison's lemma, the plot we obtained is shown as following:
 
 #### Compare the two variants (with or without the Sherman-Morrison lemma). Which is the most accurate, which is the fastest, and why (can you include in your report measurement of computing time)?
 
-(to be answered) Comparez les deux variantes (avec ou sans le lemme de Sherman-Morrison). Quelle est la plus pr´ecise,
-quelle est la plus rapide, et pourquoi (vous pouvez inclure dans votre rapport des mesures de temps de calcul) ?
+We first compared the time of execution with different `maxIter` of the two methods (with or without the Sherman-Morrison lemma). The results are shown in the following chart:
+
+
+| Method  | `maxIter` = $100$ | `maxIter` = $1000$  | `maxIter` = $10000$ |
+| ------------- | ------------- | ------------- | ------------- |
+| w/o Sherman-Morrison lemma  | $0.02$ sec  | $0.11$ sec | $1.13$ sec  |
+| with Sherman-Morrison lemma  | $0.00$ sec  | $0.06$ sec  | $0.41$ sec  |
+
+
+It demonstrated that the method with Sherman-Morrison lemma is faster than the one without Sherman-Morrison lemma.
+
+
+Then we compared the accuracy of the two methods by calculating the sum of squared errors. the results are shown as below:
+
+
 
 ## 2 LWLS: Locally-Weighted Least-Squares (batch method)
 
