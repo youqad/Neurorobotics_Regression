@@ -342,7 +342,27 @@ $$
 
 #### Try to find new parameters that lead to good results.
 
-(plots uploaded)
+The plots of LS method with different values for the parameters `numFeatures` and `maxIter` are shown as below:
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/LS_original.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{maxIter} = 1000$ and $\texttt{numFeatures} = 10$
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/LS_nF=15.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{maxIter} = 1000$ and $\texttt{numFeatures} = 15$
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/LS_nF=15,mI=10000.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{maxIter} = 10000$ and $\texttt{numFeatures} = 15$
+  </figcaption>
+</figure>
+
+
 
 
 #### Now that you've been able to test an incremental method and a batch method, what do you think are the advantages and drawbacks of the least-squares approach?
