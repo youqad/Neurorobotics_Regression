@@ -98,7 +98,7 @@ Open the `exoGD.py file`. It contains the function `generateDataSample(x)` which
 ### Implement the `train_GD(maxIter)` function that will adjust the `theta` value by gradient descent from a data number equal to `maxIter`. When the file is executed, the observed data is displayed by dots, and the red curve is the "learned" function, that is, the function `f` corresponding to the parameters `theta` adjusted by `train_GD(maxIter)`. Other curves correspond to the different $f_{θ_i}(\textbf{x})$ and show how the function `f` is decomposed.
 
 
-According to the fomulas given in the tutorial for calculating `f`, `ε`, `∇` and `θ`,  we modified the original codes as follows for `train_GD(maxIter)` function:
+According to the fomulas given in the tutorial for calculating `f`, `ε`, `∇` and `θ`, we modified the original codes as follows for `train_GD(maxIter)` function:
 
 
 ```python
@@ -136,7 +136,7 @@ According to the fomulas given in the tutorial for calculating `f`, `ε`, `∇` 
 		iterationCount += 1
 ```
 
-The plot we obtained is shown as below. In the plot, the red line fits the observed points well.
+With `maxIter` = $1000$ and `numFeatures` = $10$, the plot we obtained is shown as below. 
 
 <figure>
   <img src="https://i.gyazo.com/191fd0e322c9100f688cc9a01bf8e7ee.png" alt="Figure ">
