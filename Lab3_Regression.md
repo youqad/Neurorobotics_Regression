@@ -22,6 +22,9 @@ abstract: 'Lab 2: Navigation Strategies'
 
 ### Kexin Ren & Younesse Kaddar (**Lecturer**: Nicolas Perrin)
 
+$$
+\newcommand{\T}{ {\raise{0.7ex}{\intercal}}}
+$$
 
 In this lab, we aim to create a model out of experimental data. The model structure is established in advance, and the parameter thereof are gradually modified. In Machine Learning (ML), it is a crucial technique, as modifying the parameters on the fly leads to performance improvement over time.
 
@@ -57,12 +60,12 @@ $$f_{θ_i} ≝ θ_i \; \underbrace{\exp\left(- \frac{(\textbf{x}-\textbf{c}_i)^2
 
 And one sets:
 
-$$ϕ(\textbf{x}) ≝ \Big(ϕ_1(\textbf{x}) \; ⋯ \; ϕ_k(\textbf{x})\Big)^T\\
-θ ≝ \big(θ_1 \; ⋯ \; θ_k\big)^T$$
+$$ϕ(\textbf{x}) ≝ \Big(ϕ_1(\textbf{x}) \; ⋯ \; ϕ_k(\textbf{x})\Big)^\T\\
+θ ≝ \big(θ_1 \; ⋯ \; θ_k\big)^\T$$
 
 so that:
 
-$$f(\text{x}) = ϕ(\textbf{x})^T θ$$
+$$f(\text{x}) = ϕ(\textbf{x})^\T θ$$
 
 The goal of this regression is to adjust $θ$. We will see 3 methods: two incremental algorithms, and a *batch* one, that treats all the data in one go.
 
@@ -249,11 +252,11 @@ $$ε(θ) ≝ \frac 1 {2N} \sum\limits_{ i=1 }^N \left(y^{(i)} - f_θ\big(\textbf
 
 A local minimum $θ$ corresponds to a zero gradient:
 
-$$\textbf{0} = \nabla ε(θ) = - \frac 1 N \sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) \left(y^{(i)} - ϕ(\textbf{x}^{(i)})^T θ\right)$$
+$$\textbf{0} = \nabla ε(θ) = - \frac 1 N \sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) \left(y^{(i)} - ϕ(\textbf{x}^{(i)})^\T θ\right)$$
 
 i.e.
 
-$$\underbrace{\left(\sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) ϕ(\textbf{x}^{(i)})^T \right)}_{≝ \; A}  \; θ = \underbrace{\sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) y^{(i)}}_{≝ \; b}$$
+$$\underbrace{\left(\sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) ϕ(\textbf{x}^{(i)})^\T \right)}_{≝ \; A}  \; θ = \underbrace{\sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) y^{(i)}}_{≝ \; b}$$
 
 Therefore:
 
@@ -313,9 +316,9 @@ Indeed,
 
 $$
 \begin{align*}
-A &= \sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) ϕ(\textbf{x}^{(i)})^T \\
-&= \underbrace{\begin{pmatrix} ϕ(\textbf{x}^{(1)}) \mid ⋯ \mid ϕ(\textbf{x}^{(N)}) \end{pmatrix}}_{= \; \texttt{phiOutput(x)}} \begin{pmatrix} ϕ(\textbf{x}^{(1)}) \mid ⋯ \mid ϕ(\textbf{x}^{(N)}) \end{pmatrix}^T \\
-&= \texttt{phiOutput(x)} \; \texttt{phiOutput(x)}^T
+A &= \sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) ϕ(\textbf{x}^{(i)})^\T \\
+&= \underbrace{\begin{pmatrix} ϕ(\textbf{x}^{(1)}) \mid ⋯ \mid ϕ(\textbf{x}^{(N)}) \end{pmatrix}}_{= \; \texttt{phiOutput(x)}} \begin{pmatrix} ϕ(\textbf{x}^{(1)}) \mid ⋯ \mid ϕ(\textbf{x}^{(N)}) \end{pmatrix}^\T \\
+&= \texttt{phiOutput(x)} \; \texttt{phiOutput(x)}^\T
 \end{align*}
 $$
 
@@ -324,7 +327,7 @@ and
 $$
 \begin{align*}
 b &= \sum\limits_{ i=1 }^N ϕ(\textbf{x}^{(i)}) y^{(i)} \\
-&= \begin{pmatrix} ϕ(\textbf{x}^{(1)}) \mid ⋯ \mid ϕ(\textbf{x}^{(N)}) \end{pmatrix} \begin{pmatrix} y^{(1)} ⋯ y^{(N)} \end{pmatrix}^T\\
+&= \begin{pmatrix} ϕ(\textbf{x}^{(1)}) \mid ⋯ \mid ϕ(\textbf{x}^{(N)}) \end{pmatrix} \begin{pmatrix} y^{(1)} ⋯ y^{(N)} \end{pmatrix}^\T\\
 &= \texttt{phiOutput(x)} \; y
 \end{align*}
 $$
@@ -433,7 +436,7 @@ def train_RLS(maxIter):
 
 		phi = phiOutput(x)
 
-		A_sharp -= A_sharp.dot(np.outer(phi, phi).dot(A_sharp))/(1+phi.dot(A_sharp.dot(phi))
+		A_sharp -= A_sharp.dot(np.outer(phi, phi).dot(A_sharp))/(1+phi.dot(A_sharp.dot(phi)))
 		b += phi.dot(y)
 
 		#-----------------------------#
@@ -475,4 +478,38 @@ Then we compared the accuracy of the two methods by calculating the sum of squar
 
 ## 2 LWLS: Locally-Weighted Least-Squares (batch method)
 
-(to be answered)
+The LWLS algorithm resorts to a weighted sum of local linear models, parametrized by $θ_i$ vectors such that $\dim θ_i = \dim \textbf{x} + 1 = d + 1$:
+
+$$f(\textbf{x}) = \sum\limits_{ i=1 }^k \tfrac{ϕ_i(\textbf{x})}{\sum\limits_{ j=1 }^k ϕ_j(\textbf{x})} \; m_{θ_i}(\textbf{x})$$
+
+where
+
+- $m_{θ_i}(\textbf{x}) = w(\textbf{x})^\T θ_i$
+- $w(\textbf{x}) = (\textbf{x}_1 \; ⋯ \; \textbf{x}_d \, 1)^\T$
+
+Each local model is computed thanks to the following local weighted error:
+
+$$ε_i(θ_i) = \frac 1 {2N} \sum\limits_{ j=1 }^N ϕ_i(\textbf{x}^{(j)}) \Big(y^{(j)} - \underbrace{m_{θ_i}(\textbf{x}^{(j)})}_{= w(\textbf{x})^\T θ_i}\Big)^2$$
+
+As for the least squares method, we set the corresponding gradient to zero, which leads to:
+
+$$\begin{align*}
+& \textbf{0} =  - \frac 1 N \sum\limits_{ j=1 }^N ϕ_i(\textbf{x}^{(j)}) w(\textbf{x}^{(j)}) \big(y^{(j)} - w(\textbf{x}^{(j)})^\T θ_i\big) \\
+⟺ \quad & \underbrace{\sum\limits_{ j=1 }^N ϕ_i(\textbf{x}^{(j)}) \, w(\textbf{x}^{(j)}) \, w(\textbf{x}^{(j)})^\T}_{≝ \; A_i} \; θ_i = \underbrace{\sum\limits_{ j=1 }^N ϕ_i(\textbf{x}^{(j)}) w(\textbf{x}^{(j)}) y^{(j)}}_{≝ \; b_i}  \\
+⟹ \quad & θ_i = A_i^\sharp \, b_i
+\end{align*}$$
+
+
+## Instructions
+
+
+Open the file `exoLWLS.py`. It contains the functions `generateDataSample(x)`, `phiOutput(input)`, and the `f(input)` function, which is different this time: it resorts to `w(input)` to compute the $w(\textbf{x})$ for one or several $\textbf{x}$ value(s). Note that, from now on, `theta` is a matrix formed by the horizontal concatenation of the $θ_i$, which are themselves $2$-dimensional vectors (since we assume that $\dim \textbf{x} = 1$).
+
+
+## Implement the function `train_LWLS()` which computes `theta`. Again, show the results in your report.
+
+## For similar parameters, compare the results obtained with the `LWLS` method and the least squares one (`exoLS.py`). Which method is the fastest, and which one gives the best results according to you? What are the main differences if we were to increase `numfeatures` for example?
+
+## Depending on the circumstances, how would you choose between an *incremental* method and a *batch* one?
+
+## What modifications (other than modifying the meta-parameters) could you bring to the algorithms to get even more accurate approximations?
