@@ -377,14 +377,17 @@ We first tested the execution time of the two methods (see chart below, `alpha` 
 | batch  | $0.047$ sec | $0.032$ sec | $0.391$ sec |
 
 
-We also tested the accuracy of the two methods by calculating the sum of the errors (absolute values), as shown in the following chart (`alpha` = 0.1).  We found that, with the same parameters, the batch method is more accurate than the incremental method. 
+We also tested the accuracy of the two methods by calculating average error (i.e. the sum of the absolute values of errors devided by number of data points), as shown in the following chart (`alpha` = 0.1).  We found that, with the same parameters, the batch method is more accurate than the incremental method. 
 
 
 | Method  | `numFeatures` = $5$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $10000$ |
 | ------------- | ------------- | ------------- | ------------- |
-| incremental  | $115$ | $72$ | $549$ |
-| batch  | $95$ | $53$  | $508$ |
+| incremental  | $0.115$ | $0.072$ | $0.055$ |
+| batch  | $0.095$ | $0.053$  | $0.051$ |
 
+Moreover, when the number of data points is very high, the difference between the accuracy of the two methods became small, inferring that the incremental method may require lots of data points for a good accuracy.
+
+Besides, when solving for the linear system in one go (our second version codes), with small number of points (about below $1000$), GD method is faster; however, with high number of points, LS is the faster one. Thus, it becomes more advantageous for a larger number of data points, as it relies on the fact that numpy is faster than regular python, as it is implemented in C under the hood.
 
 ## 1.3 Recursive Least Squares Algorithm (*incremental method*)
 
@@ -511,7 +514,6 @@ With the Sherman-Morrison lemma, the plot we obtain is shown below:
 </figure>
 
 
-
 #### Compare the two variants (with or without the Sherman-Morrison lemma). Which is the most accurate, which is the fastest, and why (can you include in your report measurement of computing time)?
 
 We first compared the time of execution with different `maxIter` of the two methods (with or without the Sherman-Morrison lemma). The results are shown in the following chart:
@@ -525,13 +527,13 @@ We first compared the time of execution with different `maxIter` of the two meth
 It demonstrated that the method with Sherman-Morrison lemma is faster than the one without Sherman-Morrison lemma.
 
 
-Then we compared the accuracy of the two methods by calculating the sum of squared errors. the results are shown as below:
+Then we compared the accuracy of the two methods by calculating the average squared errors. the results are shown as below (the values in the chart are magnified $10^5$ times):
 
 
 | Method  | `numFeatures` = $5$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $10000$ |
 | ------------- | ------------- | ------------- | ------------- |
-| w/o Sherman-Morrison lemma  | $0.02$  | $0.01$ | $0.01$  |
-| with Sherman-Morrison lemma  | $0.05$  | $0.006$  | $0.002$  |
+| w/o Sherman-Morrison lemma  | $2$  | $1$ | $0.1$  |
+| with Sherman-Morrison lemma  | $5$  | $0.6$  | $0.02$  |
 
 
 It demonstrated that with higher `numFeatures` and higher `maxIter`, the accuracy of the method with Sherman-Morrison lemma increases. When `numFeatures` is too low, the accuracy of the method with Sherman-Morrison lemma may be lower than the other. However, with higher `numFeatures`, the accuracy of the method with Sherman-Morrison lemma could lead to higher accuracy.
