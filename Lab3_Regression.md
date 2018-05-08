@@ -495,7 +495,7 @@ Then we compared the accuracy of the two methods by calculating the sum of squar
 | with Sherman-Morrison lemma  | $0.05$  | $0.006$  | $0.002$  |
 
 
-It demonstrated that with higher `numFeatures` and higher `maxIter, the accuracy of the method with Sherman-Morrison lemma increases. When `numFeatures` is too low, the accuracy of the method with Sherman-Morrison lemma may be lower than the other. However, with higher `numFeatures`, the accuracy of the method with Sherman-Morrison lemma could lead to higher accuracy.
+It demonstrated that with higher `numFeatures` and higher `maxIter`, the accuracy of the method with Sherman-Morrison lemma increases. When `numFeatures` is too low, the accuracy of the method with Sherman-Morrison lemma may be lower than the other. However, with higher `numFeatures`, the accuracy of the method with Sherman-Morrison lemma could lead to higher accuracy.
 
 ## 2 LWLS: Locally-Weighted Least-Squares (batch method)
 
