@@ -513,16 +513,16 @@ Similarly to what we did for the Least Squares method:
 
 $$
 \begin{align*}
-A &= \sum\limits_{ j=1 }^N ϕ_i(\textbf{x}^{(j)}) \, w(\textbf{x}^{(j)}) \, w(\textbf{x}^{(j)})^\T \\
+A_i &= \sum\limits_{ j=1 }^N ϕ_i(\textbf{x}^{(j)}) \, w(\textbf{x}^{(j)}) \, w(\textbf{x}^{(j)})^\T \\
 &= \underbrace{\begin{pmatrix}
-    x_1^{(1)}  & ⋯ & x_1^{(N)} \\
+    \textbf{x}_1^{(1)}  & ⋯ & \textbf{x}_1^{(N)} \\
     1  & ⋯ & 1 \\
 \end{pmatrix}}_{≝ \; W(\textbf{x})} \underbrace{\begin{pmatrix}
     ϕ_i(\textbf{x}^{(1)})  &  \\
       &  \ddots \\
       & & ϕ_i(\textbf{x}^{(N)})
 \end{pmatrix}}_{≝ \; \texttt{diag}\big(ϕ_i(\textbf{x}^{(j)})\big)_{1 ≤ j ≤ N}} \begin{pmatrix}
-    x_1^{(1)}  & ⋯ & x_1^{(N)} \\
+    \textbf{x}_1^{(1)}  & ⋯ & \textbf{x}_1^{(N)} \\
     1  & ⋯ & 1 \\
 \end{pmatrix}^\T \\
 &= W(\textbf{x}) \; \texttt{diag}\big(ϕ_i(\textbf{x}^{(j)})\big)_{j} \; W(\textbf{x})^\T
@@ -532,7 +532,7 @@ $$
 and likewise:
 
 $$
-b = W(\textbf{x}) \; \texttt{diag}\big(ϕ_i(\textbf{x}^{(j)})\big)_{j} \; \textbf{y}
+b_i = W(\textbf{x}) \; \texttt{diag}\big(ϕ_i(\textbf{x}^{(j)})\big)_{j} \; \textbf{y}
 $$
 
 which yields:
@@ -569,6 +569,8 @@ train_LWLS()
 
 
 ## For similar parameters, compare the results obtained with the `LWLS` method and the least squares one (`exoLS.py`). Which method is the fastest, and which one gives the best results according to you? What are the main differences if we were to increase `numfeatures` for example?
+
+
 
 ## Depending on the circumstances, how would you choose between an *incremental* method and a *batch* one?
 
