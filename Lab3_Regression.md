@@ -342,7 +342,9 @@ $$
 
 #### Try to find new parameters that lead to good results.
 
+
 The plots of LS method with different values for the parameters `numFeatures` and `maxIter` are shown as below:
+
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/LS_original.png?raw=true" alt="Figure ">
@@ -350,11 +352,13 @@ The plots of LS method with different values for the parameters `numFeatures` an
   </figcaption>
 </figure>
 
+
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/LS_nF=15.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with $\texttt{maxIter} = 1000$ and $\texttt{numFeatures} = 15$
   </figcaption>
 </figure>
+
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/LS_nF=15,mI=10000.png?raw=true" alt="Figure ">
@@ -363,7 +367,24 @@ The plots of LS method with different values for the parameters `numFeatures` an
 </figure>
 
 
+We summarized the accuracy regarding the values of `numFeatures` and `maxIter` in the following figures:
 
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/nI.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Accuracy regarding different $\texttt{numFeatures}$ values
+  </figcaption>
+</figure>
+
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/nI.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Accuracy regarding different $\texttt{maxIter}$ values
+  </figcaption>
+</figure>
+
+
+The figures all above illustrate that higher number of features contribute to higher accuracy, and when the number of features exceed 15, the improvement in the accuracy is not significant anymore. Thus, for the sake of saving time, we may infer that a good value for `numFeatures` could be 15.
 
 #### Now that you've been able to test an incremental method and a batch method, what do you think are the advantages and drawbacks of the least-squares approach?
 
