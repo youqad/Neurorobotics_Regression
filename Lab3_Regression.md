@@ -139,7 +139,7 @@ According to the fomulas given in the tutorial for calculating `f`, `ε`, `∇` 
 With `maxIter` = $1000$, `numFeatures` = $10$ and `alpha` = $0.9$, the plot we obtained is shown as below. 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ (`maxIter` = $1000$, `numFeatures` = $10$, `alpha` = $0.9$)
   </figcaption>
 </figure>
@@ -151,21 +151,21 @@ We first tested the effect of `maxIter` by setting `maxIter` = $100$, $1000$ (or
 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_mI=100.png" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_mI=100.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `maxIter` = $100$ (`numFeatures` = $10$, `alpha` = $0.9$)
   </figcaption>
 </figure>
 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `maxIter` = $1000$ (`numFeatures` = $10$, `alpha` = $0.9$)
   </figcaption>
 </figure>
 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_mI=10000.png" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_mI=10000.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with`maxIter` = $10000$ (`numFeatures` = $10$, `alpha` = $0.9$)
   </figcaption>
 </figure>
@@ -179,28 +179,28 @@ Then, we tested the effect of `numFeatures` by setting `numFeatures` = $5$, $10$
 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_nF=5.png" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_nF=5.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `numFeatures` = $5$ (`maxIter` = $1000$, `alpha` = $0.9$)
   </figcaption>
 </figure>
 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `numFeatures` = $10$ (`maxIter` = $1000$, `alpha` = $0.9$)
   </figcaption>
 </figure>
 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_nF=15.png" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_nF=15.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `numFeatures` = $15$ (`maxIter` = $1000$, `alpha` = $0.9$)
   </figcaption>
 </figure>
 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_nF=30.png" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_nF=30.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `numFeatures` = $30$ (`maxIter` = $1000$, `alpha` = $0.9$)
   </figcaption>
 </figure>
@@ -213,21 +213,21 @@ We can see that, as the number of features increases, the redline fits the sampl
 Finally, we tested the effect of `alpha` by setting `alpha` = $0.1$, $0.5$, and $0.9$, keeping `maxIter` = $1000$ and `numFeatures` = $10$. The plots are shown as follows:
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_a=0.1.png" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_a=0.1.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `alpha` = $0.1$ (`maxIter` = $1000$, `numFeatures` = $10$)
   </figcaption>
 </figure>
 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_a=0.5.png" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_a=0.5.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `alpha` = $0.5$ (`maxIter` = $1000$, `numFeatures` = $10$)
   </figcaption>
 </figure>
 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original.png" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/GD_original?raw=true.png" alt="Figure ">
   <figcaption><em>Figure </em> - Gradient descent: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$ with `alpha` = $0.9$ (`maxIter` = $1000$, `numFeatures` = $10$)
   </figcaption>
 </figure>
