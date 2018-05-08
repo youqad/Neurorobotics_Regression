@@ -570,6 +570,34 @@ train_LWLS()
 
 ## For similar parameters, compare the results obtained with the `LWLS` method and the least squares one (`exoLS.py`). Which method is the fastest, and which one gives the best results according to you? What are the main differences if we were to increase `numfeatures` for example?
 
+**With the LS method**, one tries to approximate the output vector $\textbf{y} ≝ (y^{(1)} ⋯ y^{(N)})^\T$ by the predictor:
+
+$$f(\textbf{x}) = \underbrace{Φ^\T}_{\rlap{\text{design matrix}}} \overbrace{θ}^{\text{estimator}}$$
+
+where
+
+$$
+\begin{cases}
+Φ ≝ \big(ϕ_i(\textbf{x}^{(j)})\big)_{\substack{1 ≤ i ≤ k \\ 1 ≤ j ≤ N}} ∈ ℳ_{k, N}(ℝ)  \\
+θ ∈ ℳ_{k, 1}(ℝ)
+\end{cases}
+$$
+
+As it happens, the "best" estimator $θ$, i.e. the one that minimizes the squared error (the squared euclidean distance between the predictor and the output):
+
+$$\Vert \textbf{y} - Φ^\T θ\Vert_2^2$$
+
+is given by (as shown before):
+
+$$θ ≝ (Φ Φ^\T)^\sharp Φ \textbf{y}$$
+
+**In the LWLS case:** for each estimator $θ_i$, each data point $\textbf{x}^{(j)}$ (recall that $\dim \textbf{x}^{(j)} = 1$ for all $1 ≤ j ≤ N$) is given the weight $ϕ_i(\textbf{x}^{(j)})$, where $ϕ_i$ is a Gaussian of mean $\textbf{c}_i$ and variance $σ_i$. Consequently, $θ_i$ is the "best" estimator (i.e. minimizing the corresponding *weighted* squared error) *given those weights*.
+
+The resulting predictor is set to be:
+
+$$f(\textbf{x}) = \sum\limits_{ i=1 }^k \underbrace{λ_i}_{≝ \; \tfrac{ϕ_i(\textbf{x})}{\sum\limits_{ j=1 }^k ϕ_j(\textbf{x})}} \; \big(\textbf{x}_1 \; ⋯ \; \textbf{x}_d \; 1\big) θ_i$$
+
+that is: the higher the weight the estimator $θ_i$ gives to $\textbf{x}$, the higher the coefficient $λ_i$ is in the weighted sum defining $f(\textbf{x})$, and hence the more $θ_i$ is taken into account to predict the ouput at $\textbf{x}$
 
 
 ## Depending on the circumstances, how would you choose between an *incremental* method and a *batch* one?
