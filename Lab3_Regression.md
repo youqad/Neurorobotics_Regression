@@ -136,7 +136,7 @@ According to the fomulas given in the tutorial for calculating `f`, `ε`, `∇` 
 		iterationCount += 1
 ```
 
-With `maxIter` = $1000$ and `numFeatures` = $10$, the plot we obtained is shown as below. 
+With `maxIter` = $1000$ and `numFeatures` = $10$, the plot we obtained is shown as below.
 
 <figure>
   <img src="https://i.gyazo.com/191fd0e322c9100f688cc9a01bf8e7ee.png" alt="Figure ">
@@ -265,6 +265,23 @@ $$
 
 ## 1.3 Recursive Least Squares Algorithm (*incremental method*)
 
+The recursive least squares algorithm is another incremental method in which $A$ and $b$ are computed at each iteration on a new data point (as $A$ and $b$ can be regarded as sums over the data points):
+
+$$A^{(t+1)} = A^{(t)} + ϕ(\textbf{x}^{(t+1)})ϕ(\textbf{x}^{(t+1)})^T\\
+b^{(t+1)} = b^{(t)} + ϕ(\textbf{x}^{(t+1)}) y^{(t+1)}$$
+
+The parameters
+
+- can be directly obtained with:
+
+    $$θ^{(t+1)} = \big(A^{(t+1)}\big)^\sharp \; b^{(t+1)}$$
+
+- can be estimated with resort to the Sherman-Morrison lemma (provided $A^{(0)}$ is non-zero):
+
+    $$\left(A + uv^T\right)^\sharp = A^\sharp - \frac{A^\sharp uv^T A^\sharp}{1+v^T A^\sharp u}$$
+
+
+
 ## Instruction:
 
 Open the `exoRLS.py` file. Its structure is very similar to `exoGD.py`.
@@ -272,7 +289,7 @@ Open the `exoRLS.py` file. Its structure is very similar to `exoGD.py`.
 ## Implement the `train_RLS()` function which will incrementally adjust `theta` by following the least-squares recursive method (without using Sherman-Morrison's lemma), and show in your report the obtained results.
 
 
-According to the fomulars given in the instruction to compute `A`, `b` and `theta`, we modify the function `train_RLS(maxIter)` as below:
+**Without Sherman-Morrison's lemma:** According to the formulas given in the instruction to compute `A`, `b` and `theta`, we modify the function `train_RLS(maxIter)` as below:
 
 ```python
 def train_RLS(maxIter):
@@ -310,11 +327,11 @@ def train_RLS(maxIter):
 ```
 
 
-Without using Sherman-Morrison's lemma, the plot we obtained is shown as follows:
+The plot we obtain is shown as follows:
 
 <figure>
   <img src="https://i.gyazo.com/b1b42b5ff320bca93951d8a3dfe854b4.png" alt="Figure ">
-  <figcaption><em>Figure </em> - Recursive Least squares: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
+  <figcaption><em>Figure </em> - Recursive Least squares without Sherman-Morrison's lemma: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
   </figcaption>
 </figure>
 
@@ -352,7 +369,7 @@ def train_RLS(maxIter):
 
 		phi = phiOutput(x)
 
-		A_sharp -= A_sharp.dot(np.outer(phi, phi).dot(A_sharp))/(1+phi.dot(A_sharp.dot(phi))
+		A_sharp -= A_sharp.dot(np.outer(phi, phi).dot(A_sharp))/(1+phi.dot(A_sharp.dot(phi)))
 		b += phi.dot(y)
 
 		#-----------------------------#
@@ -364,10 +381,10 @@ def train_RLS(maxIter):
 	theta = np.dot(A_sharp,b)
 ```
 
-With the Sherman-Morrison's lemma, the plot we obtained is shown as following:
+With the Sherman-Morrison lemma, the plot we obtained is shown as following:
 
 <figure>
-  <img src="https://i.gyazo.com/fb4ee0956b542d95c28dd2d2fad4c156.png" alt="Figure ">
+  <img src="https://i.gyazo.com/f016e9a45a0743a75c1cdcbdeb06b240.png" alt="Figure ">
   <figcaption><em>Figure </em> - Recursive Least squares with Sherman-Morrison: Plot of $f$ (in bolded red) and of the features $f_{θ_i}$
   </figcaption>
 </figure>
@@ -379,6 +396,4 @@ With the Sherman-Morrison's lemma, the plot we obtained is shown as following:
 (to be answered) Comparez les deux variantes (avec ou sans le lemme de Sherman-Morrison). Quelle est la plus pr´ecise,
 quelle est la plus rapide, et pourquoi (vous pouvez inclure dans votre rapport des mesures de temps de calcul) ?
 
-## 2 LWLS: Locally-Weighted Least-Squares (batch method)
-
-(to be answered)
+## 2. LWLS: Locally-Weighted Least-Squares (*batch method*)

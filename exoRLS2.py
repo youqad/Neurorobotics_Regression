@@ -89,7 +89,7 @@ def train_RLS(maxIter):
 		
 		phi = phiOutput(x)
 
-		A_sharp -= A_sharp.dot(np.outer(phi, phi).dot(A_sharp))/(1+phi.dot(A_sharp.dot(phi))
+		A_sharp -= A_sharp.dot(np.outer(phi, phi).dot(A_sharp))/(1+phi.dot(A_sharp.dot(phi)))
 		b += phi.dot(y)
 		
 		#-----------------------------#
