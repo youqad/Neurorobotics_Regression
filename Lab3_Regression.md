@@ -478,11 +478,10 @@ With the Sherman-Morrison lemma, the plot we obtain is shown below:
 We first compared the time of execution with different `maxIter` of the two methods (with or without the Sherman-Morrison lemma). The results are shown in the following chart:
 
 
-| Method  | `maxIter` = $100$ | `maxIter` = $1000$  | `maxIter` = $10000$ |
+| Method  | `numFeatures` = $5$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $10000$ |
 | ------------- | ------------- | ------------- | ------------- |
-| w/o Sherman-Morrison lemma  | $0.02$ sec  | $0.11$ sec | $1.13$ sec  |
-| with Sherman-Morrison lemma  | $0.00$ sec  | $0.06$ sec  | $0.41$ sec  |
-
+| w/o Sherman-Morrison lemma  | $0.13$ sec | $0.14$ sec | $1.38$ sec |
+| with Sherman-Morrison lemma  | $0.06$ sec | $0.06$ sec | $0.64$ sec |
 
 It demonstrated that the method with Sherman-Morrison lemma is faster than the one without Sherman-Morrison lemma.
 
@@ -490,6 +489,13 @@ It demonstrated that the method with Sherman-Morrison lemma is faster than the o
 Then we compared the accuracy of the two methods by calculating the sum of squared errors. the results are shown as below:
 
 
+| Method  | `numFeatures` = $5$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $10000$ |
+| ------------- | ------------- | ------------- | ------------- |
+| w/o Sherman-Morrison lemma  | $0.02$  | $0.01$ | $0.01$  |
+| with Sherman-Morrison lemma  | $0.05$  | $0.006$  | $0.002$  |
+
+
+It demonstrated that with higher `numFeatures` and higher `maxIter, the accuracy of the method with Sherman-Morrison lemma increases. When `numFeatures` is too low, the accuracy of the method with Sherman-Morrison lemma may be lower than the other. However, with higher `numFeatures`, the accuracy of the method with Sherman-Morrison lemma could lead to higher accuracy.
 
 ## 2 LWLS: Locally-Weighted Least-Squares (batch method)
 
