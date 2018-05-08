@@ -80,7 +80,7 @@ x = np.random.random(1000)
 y = map(generateDataSample, x)
 
 def train_LWLS():
-	global x, y, numfeatures, theta		
+	global x, y, numFeatures, theta		
 	
 	#----------------------#
 	## Training Algorithm ##

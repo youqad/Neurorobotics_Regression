@@ -65,7 +65,7 @@ $$ϕ(\textbf{x}) ≝ \Big(ϕ_1(\textbf{x}) \; ⋯ \; ϕ_k(\textbf{x})\Big)^\T\\
 
 so that:
 
-$$f(\text{x}) = ϕ(\textbf{x})^\T θ$$
+$$f(\textbf{x}) = ϕ(\textbf{x})^\T θ$$
 
 The goal of this regression is to adjust $θ$. We will see 3 methods: two incremental algorithms, and a *batch* one, that treats all the data in one go.
 
@@ -101,11 +101,11 @@ Open the `exoGD.py file`. It contains the function `generateDataSample(x)` which
 ### Implement the `train_GD(maxIter)` function that will adjust the `theta` value by gradient descent from a data number equal to `maxIter`. When the file is executed, the observed data is displayed by dots, and the red curve is the "learned" function, that is, the function `f` corresponding to the parameters `theta` adjusted by `train_GD(maxIter)`. Other curves correspond to the different $f_{θ_i}(\textbf{x})$ and show how the function `f` is decomposed.
 
 
-According to the fomulas given in the tutorial for calculating `f`, `ε`, `∇` and `θ`, we modified the original codes as follows for `train_GD(maxIter)` function:
+According to the formulas given in the tutorial to compute $f$, $ε$, the gradient and `theta`, we modify the original code as follows for the `train_GD(maxIter)` function:
 
 
 ```python
-    alpha = 0.1
+    alpha = 0.9
 
     # [...]
 
@@ -149,6 +149,8 @@ With `maxIter` = $1000$, `numFeatures` = $10$ and `alpha` = $0.9$, the plot we o
 
 
 #### Try to find values of `maxIter`, `numFeatures` and of learning rate leading that lead to good results (you can put screenshots in your report).
+
+
 
 We first tested the effect of `maxIter` by setting `maxIter` = $100$, $1000$ (original), and $10000$, keeping `numFeatures` = $10$ and `alpha` = $0.9$. The plots are shown as follows:
 
@@ -616,8 +618,8 @@ where
 
 $$
 \begin{cases}
-Φ ≝ \big(ϕ_i(\textbf{x}^{(j)})\big)_{\substack{1 ≤ i ≤ k \\ 1 ≤ j ≤ N}} ∈ ℳ_{k, N}(ℝ)  \\
-θ ∈ ℳ_{k, 1}(ℝ)
+Φ ≝ \big(ϕ_i(\textbf{x}^{(j)})\big)_{\substack{1 ≤ i ≤ k \\ 1 ≤ j ≤ N}} ∈ 𝔐_{k, N}(ℝ)  \\
+θ ∈ 𝔐_{k, 1}(ℝ)
 \end{cases}
 $$
 
@@ -629,11 +631,11 @@ is given by (as shown before):
 
 $$θ ≝ (Φ Φ^\T)^\sharp Φ \textbf{y}$$
 
-**In the LWLS case:** for each estimator $θ_i$, each data point $\textbf{x}^{(j)}$ (recall that $\dim \textbf{x}^{(j)} = 1$ for all $1 ≤ j ≤ N$) is given the weight $ϕ_i(\textbf{x}^{(j)})$, where $ϕ_i$ is a Gaussian of mean $\textbf{c}_i$ and variance $σ_i$. Consequently, $θ_i$ is the "best" estimator (i.e. minimizing the corresponding *weighted* squared error) *given those weights*.
+**In the LWLS case:** for each estimator $θ_i$, each data point $\textbf{x}^{(j)}$ is given the weight $ϕ_i(\textbf{x}^{(j)})$ (recall that $\dim \textbf{x}^{(j)} = 1$ for all $1 ≤ j ≤ N$), where $ϕ_i$ is a Gaussian of mean $\textbf{c}_i$ and of standard deviation $σ_i$. Consequently, $θ_i$ is the "best" estimator (i.e. minimizing the corresponding *weighted* squared error) *given those weights*.
 
 The resulting predictor is set to be:
 
-$$f(\textbf{x}) = \sum\limits_{ i=1 }^k \underbrace{λ_i}_{≝ \; \tfrac{ϕ_i(\textbf{x})}{\sum\limits_{ j=1 }^k ϕ_j(\textbf{x})}} \; \big(\textbf{x}_1 \; ⋯ \; \textbf{x}_d \; 1\big) θ_i$$
+$$f(\textbf{x}) = \sum\limits_{ i=1 }^k \overbrace{λ_i}^{≝ \; ϕ_i(\textbf{x})\big/\sum\limits_{ j=1 }^k ϕ_j(\textbf{x})} \; \big(\textbf{x}_1 \; ⋯ \; \textbf{x}_d \; 1\big) θ_i$$
 
 that is: the higher the weight the estimator $θ_i$ gives to $\textbf{x}$, the higher the coefficient $λ_i$ is in the weighted sum defining $f(\textbf{x})$, and hence the more $θ_i$ is taken into account to predict the ouput at $\textbf{x}$
 
