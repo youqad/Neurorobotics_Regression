@@ -757,6 +757,17 @@ As for the accuracy (the higher the accuracy, the lower test/train error): as sh
 - the ones that perform the most poorly are GD and LWLS 
 
 
+As for the execution speed: as shown in the figure below, by averaging over many trials we found that, as the number of data points increases, the execution time of LWLS become more and more longer than that of LS. Thus, normally, LS is the faster one.
+
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/timeLS_LWLS.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Comparison of average execution time between LS and LWLS (with $\texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
+
+
 ## Depending on the circumstances, how would you choose between an *incremental* method and a *batch* one?
 
 Incremental methods seem to be more fitted for **online learning** situations: when
