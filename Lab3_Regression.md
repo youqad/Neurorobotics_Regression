@@ -752,6 +752,10 @@ _____________
 </figure>
 
 
+As for the accuracy (the higher the accuracy, the lower test/train error): as shown in the above figures comparing the train/test errors or all the models, LWLS doesn't seem to perform as good as LS (as its errors are higher). The obtained LWLS errors are rather similar the ones of the Gradient Descent (GD) method. Basically, there models we reviewed are twofold, with respect to their train/test errors:
+
+- the ones that perform the most poorly are GD and LWLS 
+
 
 ## Depending on the circumstances, how would you choose between an *incremental* method and a *batch* one?
 
