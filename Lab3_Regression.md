@@ -430,6 +430,18 @@ Moreover, when the number of data points is very high, the difference between th
 
 Besides, when solving for the linear system in one go (our second version codes), with small number of points (about below $1000$), GD method is faster; however, with high number of points, LS is the faster one. Thus, it becomes more advantageous for a larger number of data points, as it relies on the fact that numpy is faster than regular python, as it is implemented in C under the hood.
 
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/GD_errors.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Comparison of average train and test errors for the Gradient Descent method (with $\texttt{alpha} = 0.9, \texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/LS_errors.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Comparison of average train and test errors for the Least Squares method (with $\texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
 
 ## 1.3 Recursive Least Squares Algorithm (*incremental method*)
 
@@ -581,32 +593,6 @@ Then we compared the accuracy of the two methods by calculating the average squa
 It demonstrated that with higher `numFeatures` and higher `maxIter`, the accuracy of the method with Sherman-Morrison lemma increases. When `numFeatures` is too low, the accuracy of the method with Sherman-Morrison lemma may be lower than the other. However, with higher `numFeatures`, the accuracy of the method with Sherman-Morrison lemma could lead to higher accuracy.
 
 
-
-<figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/all_errors_bars.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Bar Diagram: Comparison of average train and test errors for all the models (with $\texttt{numFeatures} = 10$)
-  </figcaption>
-</figure>
-
-<figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/all_errors_curves.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Curves: Comparison of average train and test errors for all the models (with $\texttt{numFeatures} = 10$)
-  </figcaption>
-</figure>
-
-<figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/GD_errors.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Comparison of average train and test errors for the Gradient Descent method (with $\texttt{alpha} = 0.9, \texttt{numFeatures} = 10$)
-  </figcaption>
-</figure>
-
-
-<figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/LS_errors.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Comparison of average train and test errors for the Least Squares method (with $\texttt{numFeatures} = 10$)
-  </figcaption>
-</figure>
-
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/RLS_errors.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Comparison of average train and test errors for the Recursive Least Squares method (with $\texttt{numFeatures} = 10$)
@@ -620,11 +606,6 @@ It demonstrated that with higher `numFeatures` and higher `maxIter`, the accurac
   </figcaption>
 </figure>
 
-<figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/LWLS_errors.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Comparison of average train and test errors for the Locally Weighted Least Squares method (with $\texttt{numFeatures} = 10$)
-  </figcaption>
-</figure>
 
 
 ## 2 LWLS: Locally-Weighted Least-Squares (batch method)
@@ -749,6 +730,27 @@ The resulting predictor is set to be:
 $$f(\textbf{x}) = \sum\limits_{ i=1 }^k \overbrace{λ_i}^{≝ \; ϕ_i(\textbf{x})\big/\sum\limits_{ j=1 }^k ϕ_j(\textbf{x})} \; \big(\textbf{x}_1 \; ⋯ \; \textbf{x}_d \; 1\big) θ_i$$
 
 that is: the higher the weight the estimator $θ_i$ gives to $\textbf{x}$, the higher the coefficient $λ_i$ is in the weighted sum defining $f(\textbf{x})$, and hence the more $θ_i$ is taken into account to predict the ouput at $\textbf{x}$
+
+_____________
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/LWLS_errors.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Comparison of average train and test errors for the Locally Weighted Least Squares method (with $\texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/all_errors_bars.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Bar Diagram: Comparison of average train and test errors for all the models (with $\texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/all_errors_curves.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Curves: Comparison of average train and test errors for all the models (with $\texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
 
 
 ## Depending on the circumstances, how would you choose between an *incremental* method and a *batch* one?
