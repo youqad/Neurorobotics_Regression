@@ -22,6 +22,8 @@ abstract: 'Lab 2: Navigation Strategies'
 
 ### Kexin Ren & Younesse Kaddar (**Lecturer**: Nicolas Perrin)
 
+[Jupyter Notebook](http://younesse.net/ipynb/neurorobotics/Regression_Algorithms.html)
+
 $$
 \newcommand{\T}{ {\raise{0.7ex}{\intercal}}}
 $$
@@ -780,7 +782,7 @@ As for the average error versus number of featuers, we made the plot by averagin
 
 <figure>
   <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/error_feature_LS_LWLS.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> -Comparison of average errors for different $\numFeatures$ (with $\texttt{maxIter} = 1000$)
+  <figcaption><em>Figure </em> -Comparison of average errors for different $\texttt{numFeatures}$ (with $\texttt{maxIter} = 1000$)
   </figcaption>
 </figure>
 
