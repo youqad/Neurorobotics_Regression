@@ -68,9 +68,9 @@ theta = np.random.random(numFeatures)
 
 xHistory = []
 yHistory = []
-
+E=0
 def train_GD(maxIter):
-	global theta, xHistory, yHistory, alpha
+	global theta, xHistory, yHistory, alpha, E
 	iterationCount = 0
 	while iterationCount < maxIter:			
 		#----------------------#
@@ -98,13 +98,23 @@ def train_GD(maxIter):
 		e = y - fval
 		delta = phiOutput(x)
 		theta += alpha*e*delta
-
+		
+		E += abs(e)
 		#-----------------------------#
 		#  End of Training Algorithm  #
 		#-----------------------------#
 		iterationCount += 1
 
 train_GD(1000)
+#----------test error----------#
+#f = np.vectorize(f)
+#generateDataSample = np.vectorize(generateDataSample)
+
+#def test_error(nb_points):
+	#xs_test = np.random.random(nb_points)
+	#return np.mean(np.abs(generateDataSample(xs_test) - f(xs_test)))
+	
+#print test_error(1000)
 
 #----------- Plotting ---------------#
 xs = np.linspace(0.0,1.0,1000)
