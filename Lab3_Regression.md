@@ -777,7 +777,7 @@ The obtained LWLS errors are rather similar to the ones of the Gradient Descent 
     - but the RLS2 train error is a little bit higher than the other two: this can be accounted for by the fact that the pseudo-inverse calculation resulting from the Sherman-Morrison lemma is too rough at first (it has had time to sufficiently converge toward the actual pseudo-inverse with so few iterations)
 
 
-As for the average error versus number of featuers, we made the plot by averaging over 10 trials. As shown in the figure below, the average error decreases for both LS and LWLS, and LS generates lower error for all the numbers of features than LWLS. However, as discussed in Q1.1, we should be careful with the possible overfitting issue as number of features goes up. Thus, an appropriate number of features should be selected by considering both average error and overfitting problems.
+As for the average error depending on the number of features, we made the following plot by averaging over $10$ trials. As shown in the figure below, the average error decreases for both LS and LWLS. And LS generates lower error for all the numbers of features than LWLS. However, as discussed in Q1.1, we should be careful with the possible overfitting issue, as the number of features goes up. Thus, an appropriate number of features should be selected by considering both average error and overfitting problems.
 
 
 <figure>
