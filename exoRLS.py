@@ -66,8 +66,10 @@ def f(input, *user_theta):
 xHistory = []
 yHistory = []
 
+E = 0 
+
 def train_RLS(maxIter):	
-	global theta, xHistory, yHistory
+	global theta, xHistory, yHistory, E
 			
 	## Initialize A and b ##
 	A = np.zeros(shape=(numFeatures,numFeatures))
@@ -83,13 +85,22 @@ def train_RLS(maxIter):
 		xHistory.append(x)
 		yHistory.append(y)
 		
+		e=0
 		#----------------------#
 		## Training Algorithm ##
 		#----------------------#
 
-		phi = phiOutput(x)
-		A += np.outer(phi, phi)
-		b += phi.dot(y)	
+		theta = np.zeros((numFeatures,))
+
+		A += np.outer(phiOutput(x),phiOutput(x))
+		b += phiOutput(x)*y
+		
+		theta = np.dot(np.linalg.pinv(A),b)
+
+                fval = np.zeros(n)
+                fval = f(x, theta)
+                e = y - fval
+		E = e.dot(e.T)
 			
 		#-----------------------------#
 		## End of Training Algorithm ##
@@ -100,7 +111,7 @@ def train_RLS(maxIter):
 	theta = np.dot(np.linalg.pinv(A),b)
 
 train_RLS(1000)
-
+print("E =", E/1000)
 #----------- Plotting ---------------#
 xs = np.linspace(0.0,1.0,1000)
 z = map(f, xs)
