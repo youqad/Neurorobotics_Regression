@@ -755,7 +755,7 @@ that is: the higher the weight the estimator $θ_i$ gives to $\textbf{x}$, the h
 
 Incremental methods seem to be more fitted for **online learning** situations: when
 
-- there is a input stream of data points, processed one after another over time
+- there is a input stream of data points, processed one after another over time (so that we don't have the full training set at once)
 - we want the algorithm to be as fast as possible
 - we don't care too much about the accuracy (compared to the accuracy we could reach with batch methods)
 
@@ -770,3 +770,13 @@ On the other hand, batch methods come in handy when we
 
 
 ## What modifications (other than modifying the meta-parameters) could you bring to the algorithms to get even more accurate approximations?
+
+
+We could
+
+- try to vary the "types" of kernels used to approximate the ouput: insted of just settling for Gaussian kernels, we could use a combination of other kernels as well: sinc, triangle, Laplace, Cauchy, etc...
+
+- use several *epochs* for the incremental methods: that is, instead of just going through the training set once, we could repeat the training several times over the input data points, which would result in the training error decreasing more and more. But we would have to be careful not to overfit the training data (as a result of too many epochs)!
+
+
+- go as far as to develop a *hybrid* model to strike a better balance between speed of execution/online learning and accuracy: for instance, we could incrementally use batch methods over mini-batches (of given fixed size), one after the other, and then combine the models learnt on each mini-batch with a "voting" mechanism to choose the predicted output. The size of the mini-batches would then be chosen to meet a compromise between online flexibility/speed (smaller mini-batches) and accuracy (larger mini-batches).
