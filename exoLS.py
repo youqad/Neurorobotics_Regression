@@ -109,3 +109,17 @@ for i in range(numFeatures):
 plt.plot(x, y, 'o')
 plt.plot(xs, z, lw=3, color='red')
 plt.show()
+
+f = np.vectorize(f)
+generateDataSample = np.vectorize(generateDataSample)
+
+def test_error(max_nb_points=10000, nb_trials=100):	
+	xs = np.arange(max_nb_points/nb_trials, max_nb_points, max_nb_points/nb_trials)
+	ys = []
+
+	for nb_points in xs:
+		np.random.seed(1)
+		xs_test = np.random.random(nb_points)
+		ys.append(np.mean(np.abs(generateDataSample(xs_test) - f(xs_test))))
+
+	return xs, ys

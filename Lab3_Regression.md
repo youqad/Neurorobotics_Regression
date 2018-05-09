@@ -411,7 +411,7 @@ We first tested the execution time of the two methods (see chart below, `alpha` 
 | batch  | $0.047$ sec | $0.032$ sec | $0.391$ sec |
 
 
-We also tested the accuracy of the two methods by calculating average error (i.e. the sum of the absolute values of errors devided by number of data points), as shown in the following chart (`alpha` = 0.1).  We found that, with the same parameters, the batch method is more accurate than the incremental method. 
+We also tested the accuracy of the two methods by calculating average error (i.e. the sum of the absolute values of errors devided by number of data points), as shown in the following chart (`alpha` = 0.1).  We found that, with the same parameters, the batch method is more accurate than the incremental method.
 
 
 | Method  | `numFeatures` = $5$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $1000$  | `numFeatures` = $10$, `maxIter` = $10000$ |
@@ -697,5 +697,23 @@ that is: the higher the weight the estimator $θ_i$ gives to $\textbf{x}$, the h
 
 
 ## Depending on the circumstances, how would you choose between an *incremental* method and a *batch* one?
+
+Incremental methods seem to be more fitted for **online learning** situations: when
+
+- there is a input stream of data points, processed one after another over time
+- we want the algorithm to be as fast as possible
+- we don't care too much about the accuracy (compared to the accuracy we could reach with batch methods)
+
+We have encountered a similar situation in computational neuroscience courses, with the *Rescola-Wagner rule* (also known as the delta-rule).
+
+On the other hand, batch methods come in handy when we
+
+- have all the training set at hand
+- don't care that much about the algorithm taking a little more time
+- want the supervized-learning algorithm to be as accurate as possible (i.e. we want the best unbiaised estimator for the training set at hand)
+
+
+
+
 
 ## What modifications (other than modifying the meta-parameters) could you bring to the algorithms to get even more accurate approximations?

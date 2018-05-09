@@ -94,10 +94,7 @@ def train_RLS(maxIter):
 		A_sharp -= A_sharp.dot(np.outer(phi, phi).dot(A_sharp))/(1+phi.dot(A_sharp.dot(phi)))
 		b += phi.dot(y)
 		
-		fval = np.zeros(n)
-                fval = f(x, theta)
-                e = y - fval
-                E = e.dot(e.T)
+        E += abs(y - f(x))
 		#-----------------------------#
 		## End of Training Algorithm ##
 		#-----------------------------#
