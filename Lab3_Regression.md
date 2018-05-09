@@ -760,18 +760,7 @@ As for the accuracy (the higher the accuracy, the lower test/train error): as sh
 - the models with the highest accuracy (i.e. the lowest errors) are the LS, RLS, and RLS with Sherman-Morrison (RLS2) ones: these are all least-squares-related algorithms, the only difference between them being the updating mechanism: the batch LS computes the best estimator in one go, whereas RLS and RLS2 proceed incrementally. Their errors slightly differ for a few ($≤ 1000$) number of input data points:
 
     - the LS and RLS methods have really similar errors (RLS being *slighly* better)
-    - but the RLS2 train error is a little bit higher than the other two: this can be accounted for by the fact that the pseudo-inverse calculation resulting from the Sherman-Morrison lemma is no
-
-As for the execution speed: as shown in the figure below, by averaging over many trials we found that, as the number of data points increases, the execution time of LWLS become more and more longer than that of LS. Thus, normally, LS is the faster one.
-
-
-<figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/timeLS_LWLS.png?raw=true" alt="Figure ">
-  <figcaption><em>Figure </em> - Comparison of average execution time between LS and LWLS (with $\texttt{numFeatures} = 10$)
-  </figcaption>
-</figure>
-
-
+    - but the RLS2 train error is a little bit higher than the other two: this can be accounted for by the fact that the pseudo-inverse calculation resulting from the Sherman-Morrison lemma is too rough at first (it has had time to sufficiently converge toward the actual pseudo-inverse with so few iterations) 
 
 ## Depending on the circumstances, how would you choose between an *incremental* method and a *batch* one?
 
