@@ -779,12 +779,12 @@ As for the average error versus number of featuers, we made the plot by averagin
 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/all_errors_curves.png?raw=true" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/error_feature_LS_LWLS.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> -Comparison of average errors for different $\numFeatures$ (with $\texttt{maxIter} = 1000$)
   </figcaption>
 </figure>
 
-https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/error_feature_LS_LWLS.png?raw=true
+
 
 ## Depending on the circumstances, how would you choose between an *incremental* method and a *batch* one?
 
