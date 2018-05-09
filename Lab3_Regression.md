@@ -393,10 +393,13 @@ The figures all above illustrate that higher number of features contribute to lo
 
 
 <figure>
-  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Q1-differentParameters/nI.png?raw=true" alt="Figure ">
+  <img src="https://github.com/youqad/Neurorobotics_Regression/raw/master/Average_errors/LS_errors.png?raw=true" alt="Figure ">
   <figcaption><em>Figure </em> - Average error for different $\texttt{maxIter}$ values
   </figcaption>
 </figure>
+
+
+From the figure we can see that, the average error goes down when number of data points exceed 1000. Thus, with about 1000 data points, we can get a relatively low average error, as well as a ideal execution speed. Though the lowest error appears around 300 points, such a small scale data is not a reasonable choice to get a good model.
 
 
 #### Now that you've been able to test an incremental method and a batch method, what do you think are the advantages and drawbacks of the least-squares approach?
