@@ -572,6 +572,53 @@ Then we compared the accuracy of the two methods by calculating the average squa
 
 It demonstrated that with higher `numFeatures` and higher `maxIter`, the accuracy of the method with Sherman-Morrison lemma increases. When `numFeatures` is too low, the accuracy of the method with Sherman-Morrison lemma may be lower than the other. However, with higher `numFeatures`, the accuracy of the method with Sherman-Morrison lemma could lead to higher accuracy.
 
+
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/all_errors_bars.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Bar Diagram: Comparison of average train and test errors for all the models (with $\texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/all_errors_curves.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Curves: Comparison of average train and test errors for all the models (with $\texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/GD_errors.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Comparison of average train and test errors for the Gradient Descent method (with $\texttt{alpha} = 0.9, \texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/LS_errors.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Comparison of average train and test errors for the Least Squares method (with $\texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/RLS_errors.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Comparison of average train and test errors for the Recursive Least Squares method (with $\texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/RLS2_errors.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Comparison of average train and test errors for the Recursive Least Squares method with Sherman-Morrison (with $\texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/youqad/Neurorobotics_Regression/blob/master/Average_errors/LWLS_errors.png?raw=true" alt="Figure ">
+  <figcaption><em>Figure </em> - Comparison of average train and test errors for the Locally Weighted Least Squares method (with $\texttt{numFeatures} = 10$)
+  </figcaption>
+</figure>
+
+
 ## 2 LWLS: Locally-Weighted Least-Squares (batch method)
 
 The LWLS algorithm resorts to a weighted sum of local linear models, parametrized by $θ_i$ vectors such that $\dim θ_i = \dim \textbf{x} + 1 = d + 1$:
@@ -711,8 +758,6 @@ On the other hand, batch methods come in handy when we
 - have all the training set at hand
 - don't care that much about the algorithm taking a little more time
 - want the supervized-learning algorithm to be as accurate as possible (i.e. we want the best unbiaised estimator for the training set at hand)
-
-
 
 
 
