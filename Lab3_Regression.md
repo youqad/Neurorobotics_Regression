@@ -751,11 +751,16 @@ _____________
   </figcaption>
 </figure>
 
+<br>
 
 As for the accuracy (the higher the accuracy, the lower test/train error): as shown in the above figures comparing the train/test errors or all the models, LWLS doesn't seem to perform as good as LS (as its errors are higher). The obtained LWLS errors are rather similar the ones of the Gradient Descent (GD) method. Basically, there models we reviewed are twofold, with respect to their train/test errors:
 
-- the ones that perform the most poorly are GD and LWLS 
+- the ones that perform the most poorly are GD and LWLS, with an average error around  $0.07$. It should be noted, though, that the GD test error is very unstable compared to the LWLS error, which is almost monotonous
 
+- the models with the highest accuracy (i.e. the lowest errors) are the LS, RLS, and RLS with Sherman-Morrison (RLS2) ones: these are all least-squares-related algorithms, the only difference between them being the updating mechanism: the batch LS computes the best estimator in one go, whereas RLS and RLS2 proceed incrementally. Their errors slightly differ for a few ($≤ 1000$) number of input data points:
+
+    - the LS and RLS methods have really similar errors (RLS being *slighly* better)
+    - but the RLS2 train error is a little bit higher than the other two: this can be accounted for by the fact that the pseudo-inverse calculation resulting from the Sherman-Morrison lemma is no
 
 As for the execution speed: as shown in the figure below, by averaging over many trials we found that, as the number of data points increases, the execution time of LWLS become more and more longer than that of LS. Thus, normally, LS is the faster one.
 

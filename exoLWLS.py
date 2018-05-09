@@ -106,6 +106,8 @@ xs = np.linspace(0.0, 1.0, 1000)
 z = f(xs)
 plt.plot(x, y, 'o')
 plt.plot(xs, z, lw=3, color='red')
-plt.show()	
+plt.show()
 
-
+generateDataSample = np.vectorize(generateDataSample)
+xs_test = np.random.random(len(x))
+print "Test Error for {} number of features: {}".format(numFeatures, np.mean(np.abs(generateDataSample(xs_test) - f(xs_test))))
