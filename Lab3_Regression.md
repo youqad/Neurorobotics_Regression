@@ -4,6 +4,7 @@ author:
 - 'Kexin Ren'
 - 'Younesse Kaddar'
 date: 2018-05-06
+toc: true
 tags:
   - lab
   - tutorial
@@ -811,7 +812,7 @@ On the other hand, batch methods come in handy when we
 
 We could
 
-- try to vary the "types" of kernels used to approximate the ouput: insted of just settling for Gaussian kernels, we could use a combination of other kernels as well: sinc, triangle, Laplace, Cauchy, etc...
+- try to vary the "types" of kernels used to approximate the ouput: instead of just settling for Gaussian kernels, we could use a combination of other kernels as well: sinc, triangle, Laplace, Cauchy, etc...
 
 - use several *epochs* for the incremental methods: that is, instead of just going through the training set once, we could repeat the training several times over the input data points, which would result in the training error decreasing more and more. But we would have to be careful not to overfit the training data (as a result of too many epochs)!
 
