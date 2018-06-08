@@ -66,7 +66,7 @@ def f(input, *user_theta):
 xHistory = []
 yHistory = []
 
-E = 0 
+E = 0 # error
 
 def train_RLS(maxIter):	
 	global theta, xHistory, yHistory, E
@@ -108,7 +108,6 @@ def train_RLS(maxIter):
 	theta = np.dot(np.linalg.pinv(A),b)
 
 train_RLS(1000)
-print("E =", E/1000)
 
 #----------- Plotting ---------------#
 xs = np.linspace(0.0,1.0,1000)

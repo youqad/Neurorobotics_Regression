@@ -68,7 +68,7 @@ theta = np.random.random(numFeatures)
 
 xHistory = []
 yHistory = []
-E=0
+E = 0 # error
 
 def train_GD(maxIter):
 	global theta, xHistory, yHistory, alpha, E

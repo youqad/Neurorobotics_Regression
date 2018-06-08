@@ -66,7 +66,7 @@ def f(input, *user_theta):
 xHistory = []
 yHistory = []
 
-E = 0
+E = 0 # error
 
 def train_RLS(maxIter):	
 	global theta, xHistory, yHistory, E

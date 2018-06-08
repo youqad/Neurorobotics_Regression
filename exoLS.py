@@ -85,14 +85,6 @@ def train_LS():
 
 train_LS()
 
-f = np.vectorize(f)
-generateDataSample = np.vectorize(generateDataSample)
-
-def test_error(nb_points):
-	xs_test = np.random.random(nb_points)
-	return np.mean(np.abs(generateDataSample(xs_test) - f(xs_test)))
-	
-print("error",test_error(1000))
 
 #----------- Plotting ---------------#
 xs = np.linspace(0.0, 1.0, 1000)
